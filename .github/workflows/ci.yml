@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install documentation dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build MkDocs site
+        run: mkdocs build --strict
+
+      - name: Check for package.json
+        id: package-json
+        shell: bash
+        run: |
+          if [ -f package.json ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Node.js
+        if: steps.package-json.outputs.exists == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install Node.js dependencies
+        if: steps.package-json.outputs.exists == 'true'
+        run: npm ci
+
+      - name: Run Node.js tests if present
+        if: steps.package-json.outputs.exists == 'true'
+        run: npm run test --if-present

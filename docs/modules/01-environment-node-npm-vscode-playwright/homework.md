@@ -21,7 +21,7 @@ cd playwright-ts-training
 npm init playwright@latest
 ```
 
-Во время setup выберите TypeScript и папку `тесты`. Если installer предложит установить browsers, выберите yes.
+Во время setup выберите TypeScript и папку `tests`. Если installer предложит установить browsers, выберите yes.
 
 ## Задание 3. Запустить тесты
 
@@ -115,8 +115,8 @@ npm run report
 В student project должны быть:
 
 - созданный Playwright project;
-- папка `тесты/`;
-- файл `тесты/homepage.spec.ts`;
+- папка `tests/`;
+- файл `tests/homepage.spec.ts`;
 - файл `playwright.config.ts`;
 - файл `package.json` с npm scripts;
 - файл `package-lock.json`;

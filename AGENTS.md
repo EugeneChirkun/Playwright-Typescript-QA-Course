@@ -7,8 +7,17 @@
 ## Language rules
 
 - Student-facing content must be in `docs/` and should be written in Russian.
-- Common technical terms можно оставлять на English: Node.js, npm, VS Code, Git, branch, commit, pull request, TypeScript, Playwright, Page Object Model, fixture, locator, assertion, CI.
-- Preserve Russian explanations and common English technical terms.
+
+## Язык и терминология
+
+- Student-facing Markdown must use natural Russian.
+- Do not mix random English words into Russian sentences.
+- Keep official product names, commands, APIs, file names and common IT terms in English.
+- On first mention, optionally use Russian + English in parentheses, for example: `ветка (branch)` or `pull request (PR)`.
+- Do not translate headings back into English.
+- Do not change code blocks or commands only for language normalization.
+- Prefer consistency over literal translation.
+- Common technical terms можно оставлять на English: Node.js, npm, npx, VS Code, Git, GitHub, GitHub Actions, branch, commit, pull request, PR, merge, code review, TypeScript, JavaScript, Playwright, API, CI, HTML report, Trace Viewer, Page Object Model, Page Object, fixture, locator, assertion, test runner, package.json, package-lock.json, node_modules, README.md, AGENTS.md, mkdocs.yml, course.yml.
 
 ## Repository structure
 
@@ -18,8 +27,8 @@
 - `mkdocs.yml` — MkDocs site configuration and navigation.
 - `requirements.txt` — dependencies for local build and CI.
 - `docs/` — student-facing documentation site content.
-- `docs/modules/XX-module-name/` — module pages for MkDocs.
-- `templates/module/` — templates for new modules.
+- `docs/modules/XX-module-name/` — страницы модулей для MkDocs.
+- `templates/module/` — шаблоны для новых модулей.
 - `.github/workflows/deploy-docs.yml` — GitHub Pages deployment workflow.
 
 ## Documentation site rules
@@ -33,16 +42,16 @@
 
 Each module folder under `docs/modules/` must contain:
 
-- `index.md` — module overview with Goal, QA relevance, Topics, Theory, Code examples, QA use cases, Practice, Questions and Summary.
-- `homework.md` — tasks, expected result, submission and review checklist.
+- `index.md` — обзор модуля с целью, QA-релевантностью, темами, теорией, примерами кода, QA-сценариями, практикой, вопросами и кратким итогом.
+- `homework.md` — домашние задания, ожидаемый результат, правила отправки и чеклист для проверки.
 - `checklist.md` — Markdown checkboxes.
-- `resources.md` — official documentation, extra reading, videos and tools.
+- `resources.md` — официальная документация, дополнительные материалы, видео и инструменты.
 
 ## Writing style
 
 - Пишите дружелюбно, структурно и коротко.
 - Не делайте large rewrites unless explicitly asked.
-- Пока module находится в `draft` или `planned`, не добавляйте длинную theory без отдельного запроса.
+- Пока модуль находится в `draft` или `planned`, не добавляйте длинную теорию без отдельного запроса.
 - Делайте placeholders осмысленными, чтобы их было легко расширять.
 
 ## Link/resource rules

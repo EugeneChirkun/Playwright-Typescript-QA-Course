@@ -1,4 +1,4 @@
-# Homework: Module 01
+# Домашнее задание: Модуль 01
 
 ## Задание 1. Проверить окружение
 
@@ -9,7 +9,7 @@ node -v
 npm -v
 ```
 
-Сохраните output команд: скопируйте его в README.md вашего student project или приложите screenshot terminal.
+Сохраните вывод команд: скопируйте его в README.md вашего student project или приложите screenshot terminal.
 
 ## Задание 2. Создать Playwright project
 
@@ -32,7 +32,7 @@ npx playwright test
 npx playwright show-report
 ```
 
-Убедитесь, что tests запускаются, а HTML report открывается в browser.
+Убедитесь, что тесты запускаются, а HTML report открывается в browser.
 
 ## Задание 4. Создать первый собственный тест
 
@@ -54,11 +54,11 @@ test('Playwright homepage has correct title', async ({ page }) => {
 });
 ```
 
-Запустите tests еще раз и проверьте, что новый test выполняется успешно.
+Запустите тесты еще раз и проверьте, что новый test выполняется успешно.
 
 ## Задание 5. Добавить npm scripts
 
-В `package.json` добавьте scripts для запуска tests и report:
+В `package.json` добавьте scripts для запуска тесты и report:
 
 ```json
 {
@@ -84,7 +84,7 @@ npm run report
 
 - requirements: какие versions Node.js и npm использовались;
 - install dependencies: как установить dependencies;
-- run tests: как запустить tests;
+- run tests: как запустить тесты;
 - open report: как открыть HTML report.
 
 Пример структуры:
@@ -121,19 +121,19 @@ npm run report
 - файл `package.json` с npm scripts;
 - файл `package-lock.json`;
 - файл `README.md` с краткой инструкцией;
-- успешный запуск tests;
+- успешный запуск тестов;
 - открывающийся HTML report.
 
-Папку `node_modules` не нужно отправлять на review и не нужно commit в Git.
+Папку `node_modules` не нужно отправлять на ревью и не нужно commit в Git.
 
 ## Как отправить на проверку
 
 1. Создайте repository на GitHub для student project.
-2. Сделайте commit с выполненным homework.
-3. Push changes на GitHub.
-4. Создайте pull request или отправьте link на repository, если такой формат согласован с mentor.
+2. Сделайте commit с выполненным домашним заданием.
+3. Отправьте changes на GitHub.
+4. Создайте pull request или отправьте link на repository, если такой формат согласован с ментором.
 5. В описании pull request укажите:
-   - какие commands запускались;
-   - прошли ли tests;
+   - какие команды запускались;
+   - прошли ли тесты;
    - были ли ошибки или вопросы;
-   - screenshots или terminal output, если это нужно для review.
+   - screenshots или terminal output, если это нужно для ревью.

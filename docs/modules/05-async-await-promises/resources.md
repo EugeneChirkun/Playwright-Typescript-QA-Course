@@ -1,17 +1,17 @@
-# Resources: Module 05
+# Ресурсы: Модуль 05
 
-## Official documentation
+## Официальная документация
 
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
 
-## Extra reading
+## Дополнительные материалы
 
 - TODO: добавить проверенные дополнительные материалы.
 
-## Videos
+## Видео
 
-- TODO: добавить короткие видео после review.
+- TODO: добавить короткие видео после ревью.
 
-## Tools
+## Инструменты
 
-- TODO: указать tools, которые нужны для практики модуля.
+- TODO: указать инструменты, которые нужны для практики модуля.

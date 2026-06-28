@@ -13,67 +13,67 @@ theme:
     - content.code.copy
 
 nav:
-  - Home: index.md
-  - Learning Format: learning-format.md
-  - Course Structure: course-structure.md
-  - Modules:
-    - Module 01:
-        - Overview: modules/01-environment-node-npm-vscode-playwright/index.md
-        - Homework: modules/01-environment-node-npm-vscode-playwright/homework.md
-        - Checklist: modules/01-environment-node-npm-vscode-playwright/checklist.md
-        - Resources: modules/01-environment-node-npm-vscode-playwright/resources.md
-    - Module 02:
-        - Overview: modules/02-git-branches-main-commands/index.md
-        - Homework: modules/02-git-branches-main-commands/homework.md
-        - Checklist: modules/02-git-branches-main-commands/checklist.md
-        - Resources: modules/02-git-branches-main-commands/resources.md
-    - Module 03:
-        - Overview: modules/03-typescript-introduction/index.md
-        - Homework: modules/03-typescript-introduction/homework.md
-        - Checklist: modules/03-typescript-introduction/checklist.md
-        - Resources: modules/03-typescript-introduction/resources.md
-    - Module 04:
-        - Overview: modules/04-typescript-for-qa/index.md
-        - Homework: modules/04-typescript-for-qa/homework.md
-        - Checklist: modules/04-typescript-for-qa/checklist.md
-        - Resources: modules/04-typescript-for-qa/resources.md
-    - Module 05:
-        - Overview: modules/05-async-await-promises/index.md
-        - Homework: modules/05-async-await-promises/homework.md
-        - Checklist: modules/05-async-await-promises/checklist.md
-        - Resources: modules/05-async-await-promises/resources.md
-    - Module 06:
-        - Overview: modules/06-oop-basics/index.md
-        - Homework: modules/06-oop-basics/homework.md
-        - Checklist: modules/06-oop-basics/checklist.md
-        - Resources: modules/06-oop-basics/resources.md
-    - Module 07:
-        - Overview: modules/07-playwright-basics/index.md
-        - Homework: modules/07-playwright-basics/homework.md
-        - Checklist: modules/07-playwright-basics/checklist.md
-        - Resources: modules/07-playwright-basics/resources.md
-    - Module 08:
-        - Overview: modules/08-locators-assertions-auto-waiting/index.md
-        - Homework: modules/08-locators-assertions-auto-waiting/homework.md
-        - Checklist: modules/08-locators-assertions-auto-waiting/checklist.md
-        - Resources: modules/08-locators-assertions-auto-waiting/resources.md
-    - Module 09:
-        - Overview: modules/09-page-object-model-clean-code/index.md
-        - Homework: modules/09-page-object-model-clean-code/homework.md
-        - Checklist: modules/09-page-object-model-clean-code/checklist.md
-        - Resources: modules/09-page-object-model-clean-code/resources.md
-    - Module 10:
-        - Overview: modules/10-fixtures-test-data-auth/index.md
-        - Homework: modules/10-fixtures-test-data-auth/homework.md
-        - Checklist: modules/10-fixtures-test-data-auth/checklist.md
-        - Resources: modules/10-fixtures-test-data-auth/resources.md
-    - Module 11:
-        - Overview: modules/11-api-testing-with-playwright/index.md
-        - Homework: modules/11-api-testing-with-playwright/homework.md
-        - Checklist: modules/11-api-testing-with-playwright/checklist.md
-        - Resources: modules/11-api-testing-with-playwright/resources.md
-    - Module 12:
-        - Overview: modules/12-ci-final-project/index.md
-        - Homework: modules/12-ci-final-project/homework.md
-        - Checklist: modules/12-ci-final-project/checklist.md
-        - Resources: modules/12-ci-final-project/resources.md
+  - 'Главная': 'index.md'
+  - 'Формат обучения': 'learning-format.md'
+  - 'Структура курса': 'course-structure.md'
+  - 'Модули':
+    - '01. Окружение и Playwright':
+        - 'Обзор': 'modules/01-environment-node-npm-vscode-playwright/index.md'
+        - 'Домашнее задание': 'modules/01-environment-node-npm-vscode-playwright/homework.md'
+        - 'Чеклист': 'modules/01-environment-node-npm-vscode-playwright/checklist.md'
+        - 'Ресурсы': 'modules/01-environment-node-npm-vscode-playwright/resources.md'
+    - '02. Git и ветки':
+        - 'Обзор': 'modules/02-git-branches-main-commands/index.md'
+        - 'Домашнее задание': 'modules/02-git-branches-main-commands/homework.md'
+        - 'Чеклист': 'modules/02-git-branches-main-commands/checklist.md'
+        - 'Ресурсы': 'modules/02-git-branches-main-commands/resources.md'
+    - '03. TypeScript: основы':
+        - 'Обзор': 'modules/03-typescript-introduction/index.md'
+        - 'Домашнее задание': 'modules/03-typescript-introduction/homework.md'
+        - 'Чеклист': 'modules/03-typescript-introduction/checklist.md'
+        - 'Ресурсы': 'modules/03-typescript-introduction/resources.md'
+    - '04. TypeScript для QA':
+        - 'Обзор': 'modules/04-typescript-for-qa/index.md'
+        - 'Домашнее задание': 'modules/04-typescript-for-qa/homework.md'
+        - 'Чеклист': 'modules/04-typescript-for-qa/checklist.md'
+        - 'Ресурсы': 'modules/04-typescript-for-qa/resources.md'
+    - '05. Async/await и Promise':
+        - 'Обзор': 'modules/05-async-await-promises/index.md'
+        - 'Домашнее задание': 'modules/05-async-await-promises/homework.md'
+        - 'Чеклист': 'modules/05-async-await-promises/checklist.md'
+        - 'Ресурсы': 'modules/05-async-await-promises/resources.md'
+    - '06. ООП: основы':
+        - 'Обзор': 'modules/06-oop-basics/index.md'
+        - 'Домашнее задание': 'modules/06-oop-basics/homework.md'
+        - 'Чеклист': 'modules/06-oop-basics/checklist.md'
+        - 'Ресурсы': 'modules/06-oop-basics/resources.md'
+    - '07. Playwright: основы':
+        - 'Обзор': 'modules/07-playwright-basics/index.md'
+        - 'Домашнее задание': 'modules/07-playwright-basics/homework.md'
+        - 'Чеклист': 'modules/07-playwright-basics/checklist.md'
+        - 'Ресурсы': 'modules/07-playwright-basics/resources.md'
+    - '08. Локаторы и проверки':
+        - 'Обзор': 'modules/08-locators-assertions-auto-waiting/index.md'
+        - 'Домашнее задание': 'modules/08-locators-assertions-auto-waiting/homework.md'
+        - 'Чеклист': 'modules/08-locators-assertions-auto-waiting/checklist.md'
+        - 'Ресурсы': 'modules/08-locators-assertions-auto-waiting/resources.md'
+    - '09. Page Object Model':
+        - 'Обзор': 'modules/09-page-object-model-clean-code/index.md'
+        - 'Домашнее задание': 'modules/09-page-object-model-clean-code/homework.md'
+        - 'Чеклист': 'modules/09-page-object-model-clean-code/checklist.md'
+        - 'Ресурсы': 'modules/09-page-object-model-clean-code/resources.md'
+    - '10. Fixtures и тестовые данные':
+        - 'Обзор': 'modules/10-fixtures-test-data-auth/index.md'
+        - 'Домашнее задание': 'modules/10-fixtures-test-data-auth/homework.md'
+        - 'Чеклист': 'modules/10-fixtures-test-data-auth/checklist.md'
+        - 'Ресурсы': 'modules/10-fixtures-test-data-auth/resources.md'
+    - '11. API testing':
+        - 'Обзор': 'modules/11-api-testing-with-playwright/index.md'
+        - 'Домашнее задание': 'modules/11-api-testing-with-playwright/homework.md'
+        - 'Чеклист': 'modules/11-api-testing-with-playwright/checklist.md'
+        - 'Ресурсы': 'modules/11-api-testing-with-playwright/resources.md'
+    - '12. CI и финальный проект':
+        - 'Обзор': 'modules/12-ci-final-project/index.md'
+        - 'Домашнее задание': 'modules/12-ci-final-project/homework.md'
+        - 'Чеклист': 'modules/12-ci-final-project/checklist.md'
+        - 'Ресурсы': 'modules/12-ci-final-project/resources.md'

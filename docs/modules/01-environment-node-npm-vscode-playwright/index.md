@@ -1,41 +1,339 @@
-# Module 01: Environment: Node.js, npm, VS Code и Playwright
+# Модуль 01: Environment, Node.js, npm, VS Code and Playwright
 
-## Goal
+## Цель модуля
 
-Понять основные идеи темы и связать их с ежедневной работой Automation QA.
+После этого модуля вы сможете подготовить базовое рабочее окружение Automation QA: установить и проверить Node.js и npm, создать первый Playwright project, запустить тесты, открыть HTML report и добавить удобные npm scripts для ежедневной работы.
 
-## Why this topic matters for Automation QA
+Также вы поймете, зачем Automation QA нужны инструменты вокруг тестов: зависимости, структура project, `package.json`, `node_modules`, terminal, VS Code и test runner.
 
-Эта тема помогает писать более надежные tests, быстрее разбираться в ошибках и увереннее работать с automation project.
+## Почему это важно для Automation QA
 
-## Topics
+Automation QA — это не только написание тестов. В реальной работе нужно уверенно пользоваться инструментами, понимать структуру project, устанавливать dependencies, запускать команды, читать ошибки, настраивать scripts и анализировать reports.
 
-- Ключевые понятия модуля.
-- Практические примеры для QA-задач.
-- Типичные ошибки новичков.
+Если окружение настроено неправильно, тесты могут не запускаться даже при корректном коде. Поэтому первый шаг в автоматизации — понять, из каких частей состоит рабочая среда и как они связаны между собой.
 
-## Theory
+## Темы модуля
 
-Короткий placeholder для будущей теории. Полный материал будет добавлен позже.
+- Что входит в рабочее окружение Automation QA.
+- Что такое Node.js и зачем он нужен для Playwright.
+- Что такое npm, dependencies и scripts.
+- Зачем нужны `package.json`, `package-lock.json` и `node_modules`.
+- Чем отличаются `npm install`, `npm ci`, `npm run` и `npx`.
+- Как VS Code помогает писать и запускать автотесты.
+- Какие VS Code extensions полезны для Automation QA.
+- Как установить Playwright и создать первый project.
+- Как запустить тесты в Playwright.
+- Как открыть Playwright HTML report.
+- Как прочитать первый простой Playwright test.
+- Как добавить базовые npm scripts.
 
-## Code examples
+## 1. Что такое рабочее окружение Automation QA
 
-TODO: добавить небольшие TypeScript или Playwright examples, когда модуль будет расширяться.
+Рабочее окружение Automation QA — это набор инструментов, которые нужны, чтобы писать, запускать и поддерживать автоматизированные тесты.
 
-## QA use cases
+Обычно окружение включает:
 
-Примеры будут связаны с реальными QA scenarios: проверки UI, test data, assertions и analysis failures.
+- Node.js для запуска JavaScript и инструментов TypeScript вне browser.
+- npm для установки packages и запуска scripts.
+- VS Code как редактор кода.
+- Playwright как framework и test runner.
+- Browser binaries, которые Playwright использует для запуска тестов.
+- Git и GitHub для хранения кода и совместной работы.
+- Terminal для выполнения команд.
 
-## Practice during the lesson
+Для Manual QA это похоже на набор инструментов для тестирования: browser, DevTools, test management system, баг-трекер и тестовая документация. В Automation QA добавляются редактор кода, dependencies, command line и reports.
 
-Выполнить короткое упражнение по теме модуля и обсудить результат с mentor или reviewer.
+## 2. Node.js
 
-## Questions to verify understanding
+Node.js — это среда выполнения JavaScript вне browser. Обычно JavaScript выполняется внутри browser, например на странице сайта. Node.js позволяет запускать JavaScript и инструменты на вашем компьютере через terminal.
 
-- Как эта тема помогает Automation QA?
-- Какие ошибки важно избегать?
-- Где применить этот подход в реальном test project?
+TypeScript сам по себе тоже не запускается напрямую в browser или terminal как обычный готовый код. В project используются инструменты, которые компилируют или обрабатывают TypeScript. Эти инструменты работают через Node.js.
 
-## Summary
+Playwright для TypeScript использует Node.js, потому что:
 
-В этом модуле студент получает базовое понимание темы и готовится применить ее в homework.
+- Playwright test runner запускается в Node.js.
+- npm packages устанавливаются и управляются через Node.js ecosystem.
+- команды Playwright выполняются из terminal.
+- тесты, config и reports обрабатываются инструментами Node.js.
+
+Для обучения и реальной работы рекомендуется LTS version Node.js. LTS означает Long Term Support: такая версия стабильнее, дольше поддерживается и обычно лучше подходит для production и командной разработки.
+
+Проверить установку Node.js и npm можно командами:
+
+```bash
+node -v
+npm -v
+```
+
+Если обе команды показывают version numbers, значит Node.js и npm доступны в terminal.
+
+## 3. npm
+
+npm — это package manager для Node.js. Он помогает устанавливать packages, управлять dependencies и запускать scripts из `package.json`.
+
+Package — это готовая библиотека или tool. Например, Playwright устанавливается как npm package.
+
+Dependency — это package, который нужен project. Dependencies бывают двух основных типов:
+
+- `dependencies` — packages, которые нужны приложению во время работы.
+- `devDependencies` — packages, которые нужны для разработки, тестирования, сборки или проверки кода.
+
+В automation project Playwright обычно находится в `devDependencies`, потому что он нужен для разработки и запуска тестов, а не для работы пользовательского приложения.
+
+### package.json
+
+`package.json` — главный файл Node.js project. В нем описаны название project, scripts, dependencies и devDependencies.
+
+Пример scripts в `package.json`:
+
+```json
+{
+  "scripts": {
+    "test": "playwright test"
+  }
+}
+```
+
+После этого команду можно запускать так:
+
+```bash
+npm run test
+```
+
+### package-lock.json
+
+`package-lock.json` фиксирует точные versions установленных packages и их внутренних dependencies. Это помогает всей команде устанавливать одинаковые versions и получать более предсказуемый результат.
+
+Обычно `package-lock.json` нужно commit в repository.
+
+### node_modules
+
+`node_modules` — это папка, куда npm устанавливает packages. Она может быть очень большой, потому что содержит все dependencies project.
+
+`node_modules` не нужно commit в Git. Вместо этого в repository хранят `package.json` и `package-lock.json`, а каждый developer или CI server восстанавливает dependencies командой `npm install` или `npm ci`.
+
+### npm install
+
+`npm install` устанавливает dependencies из `package.json` и обновляет `package-lock.json`, если это необходимо.
+
+```bash
+npm install
+```
+
+Эта команда часто используется локально во время разработки.
+
+### npm ci
+
+`npm ci` устанавливает dependencies строго по `package-lock.json`. Команда обычно используется в CI, потому что дает более чистую и воспроизводимую установку.
+
+```bash
+npm ci
+```
+
+### npm run
+
+`npm run` запускает script из `package.json`.
+
+```bash
+npm run test
+```
+
+Это удобно, потому что команда становится короткой и одинаковой для всей команды.
+
+### npx
+
+`npx` запускает package command без необходимости писать полный путь до executable file в `node_modules`.
+
+Например:
+
+```bash
+npx playwright test
+```
+
+Эта команда запускает локально установленный Playwright test runner.
+
+## 4. VS Code
+
+VS Code — это редактор кода, в котором удобно писать, запускать и анализировать автоматизированные тесты.
+
+Для Automation QA VS Code полезен, потому что в нем есть:
+
+- file explorer для просмотра структуры project;
+- встроенный terminal для запуска команд;
+- search по files и project;
+- подсветка syntax для TypeScript;
+- подсказки и автодополнение;
+- extensions для Playwright, linting, formatting и Git;
+- удобное чтение errors и переход к нужной строке кода.
+
+Automation QA часто работает в цикле: изменить test, запустить command, прочитать error, исправить код, снова запустить test. VS Code помогает делать это в одном месте.
+
+Рекомендуемые extensions:
+
+- Playwright Test for VS Code — запуск и debugging Playwright тесты из editor.
+- ESLint — подсветка code quality issues.
+- Prettier — автоматическое форматирование кода.
+- GitLens — расширенная работа с Git history и authorship.
+- DotENV — подсветка `.env` files, которые часто используются для environment variables.
+
+## 5. Установка Playwright
+
+Playwright можно установить двумя способами: через terminal или через VS Code extension.
+
+### Вариант 1. Установка через terminal
+
+В новом учебном project выполните команду:
+
+```bash
+npm init playwright@latest
+```
+
+Эта команда создаст Playwright project и предложит несколько вариантов настройки.
+
+Типичные ответы для обучения:
+
+- TypeScript — yes, потому что курс использует TypeScript.
+- тесты folder — можно оставить `тесты`.
+- GitHub Actions — yes, если хотите сразу увидеть пример CI setup; no, если пока хотите сосредоточиться только на локальном запуске.
+- install browsers — yes, чтобы Playwright сразу скачал browsers для тестов.
+
+### Вариант 2. Установка через VS Code extension
+
+Extension Playwright Test for VS Code умеет создавать новый Playwright project через UI. Это удобно, если вы только привыкаете к terminal.
+
+Но Automation QA все равно должен понимать terminal commands, потому что они используются в CI, documentation, onboarding и командной работе.
+
+Важно: в этом repository мы не создаем student automation project. Playwright project нужно создавать отдельно, например в отдельной папке на вашем компьютере.
+
+## 6. Структура project после установки
+
+После установки Playwright project обычно содержит такие files и folders:
+
+```text
+tests/
+playwright.config.ts
+package.json
+package-lock.json
+node_modules/
+```
+
+Что это значит:
+
+- `tests/` — папка с test files.
+- `playwright.config.ts` — configuration file Playwright: browsers, retries, reports, baseURL и другие settings.
+- `package.json` — scripts и dependencies project.
+- `package-lock.json` — зафиксированные точные versions dependencies.
+- `node_modules/` — установленные packages, которые не нужно commit в Git.
+
+## 7. Первый запуск тестов
+
+Основные команды для первого запуска:
+
+```bash
+npx playwright test
+npx playwright test --headed
+npx playwright test --ui
+npx playwright show-report
+```
+
+Что делает каждая команда:
+
+- `npx playwright test` запускает все тесты в headless mode, то есть browsers открываются без видимого окна.
+- `npx playwright test --headed` запускает тесты с видимым browser window. Это полезно для обучения и debugging.
+- `npx playwright test --ui` открывает Playwright UI mode, где можно выбирать тесты, смотреть steps и быстрее разбираться в поведении.
+- `npx playwright show-report` открывает HTML report после запуска тестов.
+
+HTML report помогает увидеть, какие тесты прошли, какие упали, сколько времени занял запуск и где произошла ошибка.
+
+## 8. Объяснение первого теста
+
+Пример первого теста:
+
+```ts
+import { test, expect } from '@playwright/test';
+
+test('Playwright homepage has correct title', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
+
+  await expect(page).toHaveTitle(/Playwright/);
+});
+```
+
+Разберем по строкам:
+
+- `import { test, expect } from '@playwright/test';` подключает из Playwright две главные функции: `test` для описания test case и `expect` для проверки результата.
+- `test('Playwright homepage has correct title', ...)` создает test с понятным названием.
+- `async` показывает, что внутри test будут asynchronous operations: browser actions, navigation и checks.
+- `({ page })` — это Playwright fixture. `page` представляет browser tab, с которым взаимодействует test.
+- `await page.goto('https://playwright.dev/');` открывает страницу Playwright website.
+- `expect(page).toHaveTitle(/Playwright/)` проверяет, что title страницы содержит слово `Playwright`.
+- Такая проверка называется assertion: она сравнивает ожидаемый результат с фактическим.
+- `await` говорит test runner подождать завершения действия или проверки перед переходом к следующей строке.
+
+Пока не нужно глубоко разбирать `async` и `await`. В этом модуле важно понять общий смысл: Playwright выполняет действия в browser не мгновенно, поэтому test должен дожидаться результата. Подробно asynchronous code будет разобран в отдельном модуле.
+
+## 9. npm scripts
+
+В `package.json` можно добавить scripts для частых команд:
+
+```json
+{
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report"
+  }
+}
+```
+
+После этого команды будут выглядеть так:
+
+```bash
+npm run test
+npm run test:headed
+npm run test:ui
+npm run report
+```
+
+Scripts полезны, потому что:
+
+- делают команды короче;
+- стандартизируют запуск тесты для всей команды;
+- уменьшают риск опечаток;
+- помогают новичкам быстрее понять, как работать с project;
+- используются в CI pipelines.
+
+## Практика на занятии
+
+1. Проверить Node.js и npm versions.
+2. Создать отдельный Playwright project вне этого documentation repository.
+3. Запустить default тесты.
+4. Открыть HTML report.
+5. Создать новый простой test для Playwright homepage.
+6. Добавить npm scripts в `package.json`.
+7. Запустить тесты через npm scripts.
+
+## Вопросы для проверки понимания
+
+- Что такое Node.js?
+- Почему Playwright нужен Node.js?
+- Что такое npm?
+- Что такое package manager?
+- Что такое `package.json`?
+- Для чего нужен `package-lock.json`?
+- Почему `node_modules` не нужно commit в Git?
+- Чем `npm install` отличается от `npm ci` на базовом уровне?
+- Что делает `npm run`?
+- Что такое `npx`?
+- Как запустить Playwright тесты из terminal?
+- Для чего нужен `playwright.config.ts`?
+- Что такое assertion?
+- Почему Playwright commands часто используют `await`?
+- Чем полезен HTML report для Automation QA?
+
+## Краткий итог
+
+В этом модуле вы подготовили базу для дальнейшего изучения Playwright и TypeScript. Теперь вы знаете, из каких инструментов состоит рабочее окружение Automation QA, зачем нужны Node.js и npm, как устроены основные project files, как создать Playwright project, запустить первый test и открыть HTML report.
+
+Следующий важный шаг — продолжить практику: чаще запускать команды из terminal, читать output и постепенно привыкать к структуре automation project.

@@ -1,18 +1,18 @@
-# Resources: Module 10
+# Ресурсы: Модуль 10
 
-## Official documentation
+## Официальная документация
 
 - https://playwright.dev/docs/test-fixtures
 - https://playwright.dev/docs/auth
 
-## Extra reading
+## Дополнительные материалы
 
 - TODO: добавить проверенные дополнительные материалы.
 
-## Videos
+## Видео
 
-- TODO: добавить короткие видео после review.
+- TODO: добавить короткие видео после ревью.
 
-## Tools
+## Инструменты
 
-- TODO: указать tools, которые нужны для практики модуля.
+- TODO: указать инструменты, которые нужны для практики модуля.

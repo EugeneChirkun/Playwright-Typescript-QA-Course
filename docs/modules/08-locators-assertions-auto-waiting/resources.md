@@ -1,19 +1,19 @@
-# Resources: Module 08
+# Ресурсы: Модуль 08
 
-## Official documentation
+## Официальная документация
 
 - https://playwright.dev/docs/locators
 - https://playwright.dev/docs/test-assertions
 - https://playwright.dev/docs/actionability
 
-## Extra reading
+## Дополнительные материалы
 
 - TODO: добавить проверенные дополнительные материалы.
 
-## Videos
+## Видео
 
-- TODO: добавить короткие видео после review.
+- TODO: добавить короткие видео после ревью.
 
-## Tools
+## Инструменты
 
-- TODO: указать tools, которые нужны для практики модуля.
+- TODO: указать инструменты, которые нужны для практики модуля.

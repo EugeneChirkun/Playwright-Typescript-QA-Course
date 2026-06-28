@@ -10,11 +10,11 @@ TODO: add GitHub Pages URL after the first deployment.
 
 ## Target audience
 
-Experienced Manual QA engineers who understand QA processes and want to learn automation with TypeScript, Playwright, Git, CI and practical test project structure.
+Опытные Manual QA engineers, которые понимают QA-процессы и хотят изучить automation с TypeScript, Playwright, Git, CI и практической структурой тестового проекта.
 
 ## Expected result after 3 months
 
-After 3 months, students should be able to create a basic Playwright project, write UI and API tests, use Page Object Model, fixtures, test data, Git branches, commits and pull requests.
+Через 3 месяца студенты смогут создать базовый Playwright project, писать UI и API-тесты, использовать Page Object Model, fixtures, test data, Git branches, commits и pull requests.
 
 ## Repository structure
 
@@ -27,9 +27,9 @@ requirements.txt           # Python dependencies for local site and CI
 docs/                      # Student-facing documentation content
   index.md                 # Student-facing homepage
   learning-format.md       # Learning process description
-  course-structure.md      # 12-module course table
-  modules/                 # Module pages used by MkDocs
-templates/module/          # Templates for new modules
+  course-structure.md      # Таблица курса из 12 модулей
+  modules/                 # Страницы модулей для MkDocs
+templates/module/          # Шаблоны для новых модулей
 .github/workflows/         # GitHub Pages deployment workflow
 ```
 
@@ -43,20 +43,29 @@ mkdocs serve
 To verify the production build locally:
 
 ```bash
-mkdocs build
+mkdocs build --strict
 ```
 
-## Add or update a module
 
-1. Update module metadata in `course.yml`.
-2. Add or edit student-facing content under `docs/modules/<module-folder>/`.
-3. Ensure the module has `index.md`, `homework.md`, `checklist.md` and `resources.md`.
-4. Update `mkdocs.yml` navigation when pages are added, removed or renamed.
-5. Keep external links in the relevant module `resources.md`.
+## CI and deployment
+
+- CI runs on pull requests and pushes to `master`.
+- Documentation deploy runs after push to `master`.
+- GitHub Pages source should be set to GitHub Actions.
+- Local build command: `mkdocs build --strict`.
+- Local preview command: `mkdocs serve`.
+
+## Добавить или обновить модуль
+
+1. Обновите метаданные модуля в `course.yml`.
+2. Добавьте или отредактируйте материалы для студентов в `docs/modules/<module-folder>/`.
+3. Убедитесь, что у модуля есть `index.md`, `homework.md`, `checklist.md` и `resources.md`.
+4. Обновите навигацию в `mkdocs.yml`, если страницы добавлены, удалены или переименованы.
+5. Добавляйте внешние ссылки только в соответствующий `resources.md` модуля.
 
 ## How Codex should be used
 
-Use Codex for small, reviewable documentation changes, structure updates, navigation updates and consistency checks. Codex should preserve Russian explanations, keep common English technical terms where natural, and avoid large rewrites unless explicitly requested.
+Используйте Codex для небольших изменений документации, обновления структуры, навигации и проверки консистентности. Codex должен сохранять русские объяснения, оставлять общепринятые English technical terms там, где это естественно, и не делать большие переписывания без явного запроса.
 
 ## Student-facing content
 

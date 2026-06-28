@@ -1,17 +1,17 @@
-# Resources: Module {{moduleNumber}}
+# Ресурсы: Модуль {{moduleNumber}}
 
-## Official documentation
+## Официальная документация
 
-- TODO: добавить official documentation для {{moduleTitle}}.
+- TODO: добавить официальную документацию для {{moduleTitle}}.
 
-## Extra reading
+## Дополнительные материалы
 
-- TODO: добавить extra reading.
+- TODO: добавить дополнительные материалы.
 
-## Videos
+## Видео
 
 - TODO: добавить videos.
 
-## Tools
+## Инструменты
 
-- TODO: добавить tools.
+- TODO: добавить инструменты.

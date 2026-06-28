@@ -1,20 +1,20 @@
-# Resources: Module 01
+# Ресурсы: Модуль 01
 
-## Official documentation
+## Официальная документация
 
 - https://nodejs.org/
 - https://docs.npmjs.com/
 - https://code.visualstudio.com/docs
 - https://playwright.dev/docs/intro
 
-## Extra reading
+## Дополнительные материалы
 
 - TODO: добавить проверенные дополнительные материалы.
 
-## Videos
+## Видео
 
-- TODO: добавить короткие видео после review.
+- TODO: добавить короткие видео после проверки.
 
-## Tools
+## Инструменты
 
-- TODO: указать tools, которые нужны для практики модуля.
+- TODO: указать инструменты, которые нужны для практики модуля.

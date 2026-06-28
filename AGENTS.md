@@ -2,7 +2,7 @@
 
 ## Project purpose
 
-Этот repository содержит MkDocs-based documentation site для structured training course: опытный Manual QA engineer переходит в Automation QA с TypeScript и Playwright. Repository остается documentation-only и не является student automation project.
+Этот repository содержит MkDocs-based documentation site для структурированного курса: опытный Manual QA engineer переходит в Automation QA с TypeScript и Playwright. Repository остается documentation-only и не является student automation project.
 
 ## Language rules
 
@@ -10,63 +10,72 @@
 - Common technical terms можно оставлять на English: Node.js, npm, VS Code, Git, branch, commit, pull request, TypeScript, Playwright, Page Object Model, fixture, locator, assertion, CI.
 - Preserve Russian explanations and common English technical terms.
 
+
+## Language and terminology
+
+- Use Russian for student-facing explanations.
+- Do not mix random English words into Russian sentences.
+- Keep official names and common technical terms in English.
+- On first mention, optionally use Russian + English in parentheses, for example: "ветка (branch)" or "pull request (PR)".
+- Prefer consistency over literal translation.
+
 ## Repository structure
 
-- `README.md` — maintainer/contributor overview.
-- `AGENTS.md` — instructions for Codex and other coding agents.
-- `course.yml` — source of truth for module metadata.
-- `mkdocs.yml` — MkDocs site configuration and navigation.
-- `requirements.txt` — dependencies for local build and CI.
-- `docs/` — student-facing documentation site content.
-- `docs/modules/XX-module-name/` — module pages for MkDocs.
-- `templates/module/` — templates for new modules.
-- `.github/workflows/deploy-docs.yml` — GitHub Pages deployment workflow.
+- `README.md` — обзор для maintainer/contributor.
+- `AGENTS.md` — инструкции для Codex и других coding agents.
+- `course.yml` — source of truth для метаданных модулей.
+- `mkdocs.yml` — конфигурация MkDocs site и навигация.
+- `requirements.txt` — зависимости для локальной сборки и CI.
+- `docs/` — материалы сайта для студентов.
+- `docs/modules/XX-module-name/` — страницы модулей для MkDocs.
+- `templates/module/` — шаблоны для новых модулей.
+- `.github/workflows/deploy-docs.yml` — workflow для деплоя GitHub Pages.
 
 ## Documentation site rules
 
-- MkDocs reads student-facing pages from `docs/`.
-- `mkdocs.yml` must be updated when navigation changes.
-- Use MkDocs-compatible relative links.
-- Do not add Playwright project files, `package.json`, test scripts or automation project scaffolding.
+- MkDocs читает страницы для студентов из `docs`.
+- `mkdocs.yml` нужно обновлять при изменении навигации.
+- Используйте относительные ссылки, совместимые с MkDocs.
+- Не добавляйте файлы Playwright project, `package.json`, test scripts или scaffolding для automation project.
 
-## Module file format
+## Формат файлов модуля
 
-Each module folder under `docs/modules/` must contain:
+Каждая папка модуля в `docs/modules/` должна содержать:
 
-- `index.md` — module overview with Goal, QA relevance, Topics, Theory, Code examples, QA use cases, Practice, Questions and Summary.
-- `homework.md` — tasks, expected result, submission and review checklist.
-- `checklist.md` — Markdown checkboxes.
-- `resources.md` — official documentation, extra reading, videos and tools.
+- `index.md` — обзор модуля с целью, важностью для QA, темами, теорией, примерами кода, QA-сценариями, практикой, вопросами и итогами.
+- `homework.md` — задания, ожидаемый результат, способ отправки и чеклист для проверки.
+- `checklist.md` — Markdown-чекбоксы.
+- `resources.md` — официальная документация, дополнительные материалы, видео и инструменты.
 
 ## Writing style
 
 - Пишите дружелюбно, структурно и коротко.
-- Не делайте large rewrites unless explicitly asked.
-- Пока module находится в `draft` или `planned`, не добавляйте длинную theory без отдельного запроса.
-- Делайте placeholders осмысленными, чтобы их было легко расширять.
+- Не делайте большие переписывания без явного запроса.
+- Пока модуль находится в `draft` или `planned`, не добавляйте длинную теорию без отдельного запроса.
+- Делайте заготовки осмысленными, чтобы их было легко расширять.
 
 ## Link/resource rules
 
-- Add external links only to the relevant module `resources.md`.
-- Prefer official documentation.
-- Do not add random low-quality tutorials.
-- For future materials use `TODO` placeholders.
+- Добавляйте внешние ссылки только в соответствующий `resources.md` модуля.
+- Отдавайте предпочтение официальной документации.
+- Не добавляйте случайные низкокачественные tutorials.
+- Для будущих материалов используйте `TODO`-заготовки.
 
 ## Change policy
 
-- `course.yml` is the source of truth for module metadata.
-- Keep `course.yml`, `docs/modules/` and `mkdocs.yml` navigation synchronized.
-- Preserve existing content where possible when moving or adapting files.
-- Keep changes small and reviewable.
+- `course.yml` is the source of truth для метаданных модулей.
+- Синхронизируйте `course.yml`, `docs/modules/` и навигацию в `mkdocs.yml`.
+- Сохраняйте существующий контент, когда перемещаете или адаптируете файлы.
+- Делайте изменения небольшими и удобными для ревью.
 
 ## Definition of done
 
-- Required files are created, moved or updated.
-- Student-facing content is under `docs/`.
-- `course.yml` paths point to `docs/modules/...`.
-- `mkdocs.yml` navigation matches the documentation structure.
-- MkDocs build is run when dependencies are available.
-- Git status shows only expected changes before commit.
+- Необходимые файлы созданы, перемещены или обновлены.
+- Материалы для студентов находятся в `docs/`.
+- Пути в `course.yml` указывают на `docs/modules/...`.
+- Навигация в `mkdocs.yml` соответствует структуре документации.
+- MkDocs build запускается, когда зависимости доступны.
+- Git status показывает только ожидаемые изменения перед commit.
 
 ## Final response format after changes
 

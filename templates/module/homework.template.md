@@ -1,17 +1,17 @@
-# Homework: Module {{moduleNumber}}
+# Домашнее задание: Модуль {{moduleNumber}}
 
-## Tasks
+## Задания
 
-- TODO: описать homework tasks для {{moduleTitle}}.
+- TODO: описать домашние задания для {{moduleTitle}}.
 
-## Expected result
+## Ожидаемый результат
 
-TODO: описать expected result.
+TODO: описать ожидаемый результат.
 
-## How to submit
+## Как отправить
 
-Создать branch, сделать commit и открыть pull request на review.
+Создать ветку (branch), сделать commit и открыть pull request на ревью.
 
-## Review checklist
+## Чеклист для проверки
 
-- TODO: добавить review criteria.
+- TODO: добавить критерии проверки.

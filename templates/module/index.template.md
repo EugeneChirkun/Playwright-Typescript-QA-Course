@@ -1,39 +1,39 @@
-# Модуль {{moduleNumber}}: {{moduleTitle}}
+# Module {{moduleNumber}}: {{moduleTitle}}
 
-## Цель
+## Goal
 
 Коротко опишите цель модуля.
 
-## Почему эта тема важна для Automation QA
+## Why this topic matters for Automation QA
 
 Объясните, зачем тема нужна Automation QA engineer.
 
-## Темы
+## Topics
 
 - {{topicOne}}
 - {{topicTwo}}
 
-## Теория
+## Theory
 
 TODO: добавить короткую теорию.
 
-## Примеры кода
+## Code examples
 
-TODO: добавить примеры кода.
+TODO: добавить code examples.
 
-## QA-сценарии
+## QA use cases
 
-TODO: добавить QA-сценарии.
+TODO: добавить QA scenarios.
 
-## Практика на занятии
+## Practice during the lesson
 
-TODO: добавить практику.
+TODO: добавить practice.
 
-## Вопросы для проверки понимания
+## Questions to verify understanding
 
 - {{questionOne}}
 - {{questionTwo}}
 
-## Итоги
+## Summary
 
 Короткое резюме модуля.

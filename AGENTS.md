@@ -11,6 +11,7 @@
 ## Язык и терминология
 
 - Student-facing Markdown must use natural Russian.
+- Student-facing documentation must be written in natural Russian. English words may be used only for official names, file names, commands, APIs and established technical terms. Do not write hybrid phrases like `через terminal`, `в project`, `packages устанавливаются`, `practice during the lesson`, `Homework`, `Tasks` or `Checklist`.
 - Do not mix random English words into Russian sentences.
 - Keep official product names, commands, APIs, file names and common IT terms in English.
 - On first mention, optionally use Russian + English in parentheses, for example: `ветка (branch)` or `pull request (PR)`.

@@ -1,0 +1,79 @@
+site_name: Playwright TypeScript QA Course
+site_description: Course for Manual QA engineers moving to Automation QA with Playwright and TypeScript
+
+theme:
+  name: material
+  language: ru
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Learning Format: learning-format.md
+  - Course Structure: course-structure.md
+  - Modules:
+    - Module 01:
+        - Overview: modules/01-environment-node-npm-vscode-playwright/index.md
+        - Homework: modules/01-environment-node-npm-vscode-playwright/homework.md
+        - Checklist: modules/01-environment-node-npm-vscode-playwright/checklist.md
+        - Resources: modules/01-environment-node-npm-vscode-playwright/resources.md
+    - Module 02:
+        - Overview: modules/02-git-branches-main-commands/index.md
+        - Homework: modules/02-git-branches-main-commands/homework.md
+        - Checklist: modules/02-git-branches-main-commands/checklist.md
+        - Resources: modules/02-git-branches-main-commands/resources.md
+    - Module 03:
+        - Overview: modules/03-typescript-introduction/index.md
+        - Homework: modules/03-typescript-introduction/homework.md
+        - Checklist: modules/03-typescript-introduction/checklist.md
+        - Resources: modules/03-typescript-introduction/resources.md
+    - Module 04:
+        - Overview: modules/04-typescript-for-qa/index.md
+        - Homework: modules/04-typescript-for-qa/homework.md
+        - Checklist: modules/04-typescript-for-qa/checklist.md
+        - Resources: modules/04-typescript-for-qa/resources.md
+    - Module 05:
+        - Overview: modules/05-async-await-promises/index.md
+        - Homework: modules/05-async-await-promises/homework.md
+        - Checklist: modules/05-async-await-promises/checklist.md
+        - Resources: modules/05-async-await-promises/resources.md
+    - Module 06:
+        - Overview: modules/06-oop-basics/index.md
+        - Homework: modules/06-oop-basics/homework.md
+        - Checklist: modules/06-oop-basics/checklist.md
+        - Resources: modules/06-oop-basics/resources.md
+    - Module 07:
+        - Overview: modules/07-playwright-basics/index.md
+        - Homework: modules/07-playwright-basics/homework.md
+        - Checklist: modules/07-playwright-basics/checklist.md
+        - Resources: modules/07-playwright-basics/resources.md
+    - Module 08:
+        - Overview: modules/08-locators-assertions-auto-waiting/index.md
+        - Homework: modules/08-locators-assertions-auto-waiting/homework.md
+        - Checklist: modules/08-locators-assertions-auto-waiting/checklist.md
+        - Resources: modules/08-locators-assertions-auto-waiting/resources.md
+    - Module 09:
+        - Overview: modules/09-page-object-model-clean-code/index.md
+        - Homework: modules/09-page-object-model-clean-code/homework.md
+        - Checklist: modules/09-page-object-model-clean-code/checklist.md
+        - Resources: modules/09-page-object-model-clean-code/resources.md
+    - Module 10:
+        - Overview: modules/10-fixtures-test-data-auth/index.md
+        - Homework: modules/10-fixtures-test-data-auth/homework.md
+        - Checklist: modules/10-fixtures-test-data-auth/checklist.md
+        - Resources: modules/10-fixtures-test-data-auth/resources.md
+    - Module 11:
+        - Overview: modules/11-api-testing-with-playwright/index.md
+        - Homework: modules/11-api-testing-with-playwright/homework.md
+        - Checklist: modules/11-api-testing-with-playwright/checklist.md
+        - Resources: modules/11-api-testing-with-playwright/resources.md
+    - Module 12:
+        - Overview: modules/12-ci-final-project/index.md
+        - Homework: modules/12-ci-final-project/homework.md
+        - Checklist: modules/12-ci-final-project/checklist.md
+        - Resources: modules/12-ci-final-project/resources.md

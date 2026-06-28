@@ -22,18 +22,18 @@
 
 ## Модули
 
-- [Модуль 01: Environment: Node.js, npm, VS Code и Playwright](modules/01-environment-node-npm-vscode-playwright/)
-- [Модуль 02: Git: branches и основные команды](modules/02-git-branches-main-commands/)
-- [Модуль 03: Введение в TypeScript](modules/03-typescript-introduction/)
-- [Модуль 04: TypeScript для QA](modules/04-typescript-for-qa/)
-- [Модуль 05: Async, await и promises](modules/05-async-await-promises/)
-- [Модуль 06: Основы OOP](modules/06-oop-basics/)
-- [Модуль 07: Основы Playwright](modules/07-playwright-basics/)
-- [Модуль 08: Locators, assertions и auto-waiting](modules/08-locators-assertions-auto-waiting/)
-- [Модуль 09: Page Object Model и clean code](modules/09-page-object-model-clean-code/)
-- [Модуль 10: Fixtures, test data и auth](modules/10-fixtures-test-data-auth/)
-- [Модуль 11: API testing with Playwright](modules/11-api-testing-with-playwright/)
-- [Модуль 12: CI и финальный проект](modules/12-ci-final-project/)
+- [Модуль 01: Environment: Node.js, npm, VS Code и Playwright](modules/01-environment-node-npm-vscode-playwright/index.md)
+- [Модуль 02: Git: branches и основные команды](modules/02-git-branches-main-commands/index.md)
+- [Модуль 03: Введение в TypeScript](modules/03-typescript-introduction/index.md)
+- [Модуль 04: TypeScript для QA](modules/04-typescript-for-qa/index.md)
+- [Модуль 05: Async, await и promises](modules/05-async-await-promises/index.md)
+- [Модуль 06: Основы OOP](modules/06-oop-basics/index.md)
+- [Модуль 07: Основы Playwright](modules/07-playwright-basics/index.md)
+- [Модуль 08: Locators, assertions и auto-waiting](modules/08-locators-assertions-auto-waiting/index.md)
+- [Модуль 09: Page Object Model и clean code](modules/09-page-object-model-clean-code/index.md)
+- [Модуль 10: Fixtures, test data и auth](modules/10-fixtures-test-data-auth/index.md)
+- [Модуль 11: API testing with Playwright](modules/11-api-testing-with-playwright/index.md)
+- [Модуль 12: CI и финальный проект](modules/12-ci-final-project/index.md)
 
 ## Как пользоваться курсом
 

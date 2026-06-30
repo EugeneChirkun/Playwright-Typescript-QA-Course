@@ -16,3 +16,13 @@
 
 - [Плейлист по Git и GitHub](https://youtube.com/playlist?list=PLuY6eeDuleIMtvOvJBAbakwcIdEt7IAXT&si=8N0C-E0YOWSOVuOm) — необязательный дополнительный видеоматериал для повторения базовых команд Git и общего рабочего процесса.
 - [Плейлист по Git](https://youtube.com/playlist?list=PLDyvV36pndZFHXjXuwA_NywNrVQO0aQqb&si=zkfWsQEv1oKI2z8k) — необязательный дополнительный материал для более подробного разбора Git, веток и работы с историей изменений.
+
+## Дополнительно: другие платформы и системы контроля версий
+
+Эти материалы нужны для общего понимания. Они не обязательны для выполнения Module 02: в курсе основными инструментами остаются Git и GitHub.
+
+- [GitLab documentation](https://docs.gitlab.com/) — документация GitLab о репозиториях, merge requests, CI/CD и возможностях платформы.
+- [Azure Repos documentation](https://learn.microsoft.com/en-us/azure/devops/repos/) — документация Azure Repos, хостинга Git-репозиториев внутри Azure DevOps.
+- [Bitbucket documentation](https://support.atlassian.com/bitbucket-cloud/) — документация Bitbucket Cloud по работе с репозиториями и совместной разработке.
+- [Apache Subversion](https://subversion.apache.org/) — официальный сайт SVN / Subversion.
+- [SVN Book](https://svnbook.red-bean.com/) — подробная книга по Subversion для тех, кто хочет узнать больше о SVN.

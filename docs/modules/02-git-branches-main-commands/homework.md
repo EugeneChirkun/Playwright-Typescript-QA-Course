@@ -37,14 +37,18 @@ git config --global --list
 
 ## Задание 3. Выполнить clone homework repository
 
-Ссылку на homework repository предоставит тьютор. Это отдельный репозиторий для домашних заданий, а не репозиторий с документацией курса.
+Homework repository — это отдельный репозиторий для домашних заданий, а не репозиторий с документацией курса. Используйте ссылку:
 
-```bash
-git clone <HOMEWORK_REPOSITORY_URL>
-cd <PROJECT_FOLDER>
+```text
+https://github.com/EugeneChirkun/Pw-Ts-Qa-Hw
 ```
 
-`<HOMEWORK_REPOSITORY_URL>` замените на реальную ссылку, которую даст тьютор. `<PROJECT_FOLDER>` замените на имя папки, которая появилась после clone.
+Выполните команды:
+
+```bash
+git clone https://github.com/EugeneChirkun/Pw-Ts-Qa-Hw
+cd Pw-Ts-Qa-Hw
+```
 
 ## Задание 4. Создать личную основную ветку студента
 
@@ -90,6 +94,10 @@ homework/module-02-git/result.md
 - короткое объяснение, зачем нужен `git commit`;
 - короткое объяснение, зачем нужен `git push`;
 - ответ, почему `node_modules` не нужно добавлять в commit;
+- короткий ответ, чем Git отличается от GitHub;
+- два примера платформ, кроме GitHub, где можно хранить Git-репозитории;
+- короткий ответ, что такое SVN / Subversion;
+- короткий ответ, в чём базовое отличие Git от SVN;
 - вопросы или проблемы, если они появились.
 
 ## Задание 7. Сделать commit и отправить ветку

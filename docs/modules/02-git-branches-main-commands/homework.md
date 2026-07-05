@@ -2,159 +2,128 @@
 
 ## Цель домашнего задания
 
-Цель — отработать реальный рабочий процесс, который используется в этом курсе:
+Цель — отработать реальный процесс сдачи домашних заданий в этом курсе:
 
 - выполнить clone homework repository;
-- создать личную основную ветку студента;
-- создать ветку для Module 02;
-- внести изменения;
+- переключиться на правильную подготовленную ветку модуля;
+- обновить ветку модуля из `student/gerasimova-elena/master`;
+- выполнить задание;
 - сделать commit;
-- отправить изменения на GitHub;
-- открыть pull request в личную основную ветку студента;
-- обновить PR после ревью, если тьютор попросит внести исправления.
+- отправить изменения на GitHub через push;
+- открыть PR в `student/gerasimova-elena/master`.
 
-## Задание 1. Проверить Git
+## Задание 1. Clone homework repository
 
-Выполните команду:
-
-```bash
-git --version
-```
-
-Если Git не установлен, установите его с официального сайта Git. Ссылка на страницу загрузки есть в ресурсах этого модуля.
-
-## Задание 2. Настроить имя и email
-
-Выполните команды:
-
-```bash
-git config --global user.name "Your Name"
-git config --global user.email "your.email@example.com"
-git config --global --list
-```
-
-Вместо `Your Name` и `your.email@example.com` укажите своё имя и email. Лучше использовать email, связанный с вашим GitHub-аккаунтом.
-
-## Задание 3. Выполнить clone homework repository
-
-Homework repository — это отдельный репозиторий для домашних заданий, а не репозиторий с документацией курса. Используйте ссылку:
-
-```text
-https://github.com/EugeneChirkun/Pw-Ts-Qa-Hw
-```
-
-Выполните команды:
+Homework repository — это отдельный репозиторий для домашних заданий. Практическая работа выполняется в нём.
 
 ```bash
 git clone https://github.com/EugeneChirkun/Pw-Ts-Qa-Hw
 cd Pw-Ts-Qa-Hw
-```
-
-## Задание 4. Создать личную основную ветку студента
-
-Выполните команды:
-
-```bash
 git fetch origin
-git switch -c student/<student-name>/master origin/master
-git push -u origin student/<student-name>/master
 ```
 
-Эта ветка — личная база студента для всех домашних заданий. Она создаётся один раз в начале работы с homework repository.
+## Задание 2. Проверить доступные ветки
 
-Студент не работает напрямую в общем `master` репозитория. Общий `master` должен оставаться чистой стартовой версией.
-
-## Задание 5. Создать ветку для Module 02
-
-Ветку задания нужно создать от личной основной ветки:
+Ветки студентки уже подготовлены. Проверьте, что они видны локально как удалённые ветки:
 
 ```bash
-git switch student/<student-name>/master
-git pull origin student/<student-name>/master
-git switch -c student/<student-name>/module-02-git
+git branch -r | grep "student/gerasimova-elena"
 ```
 
-Не создавайте ветку задания напрямую от общего `master`, если личная ветка `student/<student-name>/master` уже создана.
+## Задание 3. Переключиться на личную master-ветку и обновить её
 
-## Задание 6. Заполнить результат домашнего задания
+```bash
+git switch student/gerasimova-elena/master
+git pull origin student/gerasimova-elena/master
+```
 
-Создайте или обновите файл:
+`student/gerasimova-elena/master` — личная основная ветка студентки. В неё попадают проверенные и принятые домашние задания.
+
+## Задание 4. Переключиться на ветку Module 02 и обновить её от личной master-ветки
+
+```bash
+git switch student/gerasimova-elena/module-02-git
+git merge origin/student/gerasimova-elena/master
+git push
+```
+
+Это нужно сделать до редактирования файлов Module 02. Так ветка модуля получит уже проверенные изменения из личной основной ветки.
+
+## Задание 5. Заполнить результат Module 02
+
+Заполните файл:
 
 ```text
 homework/module-02-git/result.md
 ```
 
-Добавьте в файл:
+Файл должен содержать:
 
 - версию Git;
-- имя ветки `student/<student-name>/module-02-git`;
-- команды Git, которые вы использовали;
-- короткое объяснение, что показывает `git status`;
-- короткое объяснение, что делает `git add`;
-- короткое объяснение, зачем нужен `git commit`;
-- короткое объяснение, зачем нужен `git push`;
-- ответ, почему `node_modules` не нужно добавлять в commit;
-- короткий ответ, чем Git отличается от GitHub;
-- два примера платформ, кроме GitHub, где можно хранить Git-репозитории;
-- короткий ответ, что такое SVN / Subversion;
-- короткий ответ, в чём базовое отличие Git от SVN;
+- название текущей ветки;
+- команды, которые были использованы;
+- короткое объяснение `git status`;
+- короткое объяснение `git add`;
+- короткое объяснение `git commit`;
+- короткое объяснение `git push`;
+- объяснение, почему `node_modules` не нужно добавлять в commit;
+- ответ: чем Git отличается от GitHub;
+- ответ: назовите две альтернативы GitHub;
+- ответ: что такое SVN / Subversion и чем он отличается от Git;
 - вопросы или проблемы, если они появились.
 
-## Задание 7. Сделать commit и отправить ветку
-
-Выполните команды:
+## Задание 6. Сделать commit и push
 
 ```bash
 git status
 git add .
 git commit -m "Complete module 02 Git homework"
-git push -u origin student/<student-name>/module-02-git
+git push
 ```
 
-Перед commit внимательно посмотрите вывод `git status`, чтобы убедиться, что в изменения попали только нужные файлы.
+Перед commit внимательно проверьте `git status`, чтобы в commit попали только нужные файлы.
 
-## Задание 8. Открыть pull request
+## Задание 7. Открыть pull request
 
-Откройте GitHub и перейдите в homework repository.
+Откройте PR с таким направлением:
 
-Создайте pull request с таким направлением:
+```text
+base: student/gerasimova-elena/master
+compare: student/gerasimova-elena/module-02-git
+```
 
-- base: `student/<student-name>/master`
-- compare: `student/<student-name>/module-02-git`
+Не открывайте PR в repository `master`. Домашние задания мержатся в личную основную ветку `student/gerasimova-elena/master`.
 
-Добавьте короткое описание того, что было сделано, и отправьте PR на ревью тьютору.
+## Задание 8. Если есть замечания после ревью
 
-Не открывайте PR в общий `master` homework repository.
-
-## Задание 9. Внести исправления после ревью
-
-Если тьютор оставил комментарии, внесите исправления в той же ветке `student/<student-name>/module-02-git`.
-
-Затем выполните команды:
+Исправления после ревью выполняются в той же ветке Module 02. Новую ветку создавать не нужно.
 
 ```bash
+git switch student/gerasimova-elena/module-02-git
+
+# edit files
+
 git status
 git add .
 git commit -m "Address review comments"
 git push
 ```
 
-После push pull request обновится автоматически.
+После push существующий PR обновится автоматически.
 
 ## Ожидаемый результат
 
 К концу задания должно быть готово:
 
-- Git установлен;
-- имя и email для Git настроены;
-- homework repository склонирован на компьютер;
-- ветка `student/<student-name>/master` создана;
-- ветка `student/<student-name>/module-02-git` создана;
+- homework repository склонирован;
+- использована правильная ветка `student/gerasimova-elena/module-02-git`;
+- ветка модуля обновлена из `student/gerasimova-elena/master` до начала работы;
 - файл `homework/module-02-git/result.md` заполнен;
 - commit создан;
-- ветка отправлена на GitHub;
-- PR открыт в `student/<student-name>/master`;
-- `node_modules` не добавлен в Git.
+- изменения отправлены на GitHub;
+- PR открыт в `student/gerasimova-elena/master`;
+- `node_modules` не добавлен в Git;
+- сгенерированные отчёты и артефакты не добавлены в Git.
 
 ## Как подготовить результат для проверки
 
@@ -170,4 +139,4 @@ git push
 
 Fork полезен в open-source или в ситуациях, когда у участника нет прав на запись в исходный репозиторий.
 
-В этом курсе fork — дополнительное понятие, а не основной способ выполнения домашних заданий. Основной процесс — работа в личных ветках студента внутри homework repository.
+В этом курсе fork — дополнительное понятие, а не основной способ выполнения домашних заданий. Основной процесс — работа в подготовленных ветках студентки внутри homework repository.

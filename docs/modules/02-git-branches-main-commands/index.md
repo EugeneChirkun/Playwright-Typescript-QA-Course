@@ -7,12 +7,12 @@
 - понимать, зачем используется Git;
 - отличать Git от GitHub;
 - выполнить clone homework repository на свой компьютер;
-- создать личную основную ветку студента;
-- создать ветку для отдельного модуля;
+- переключаться между подготовленными ветками студентки;
+- обновлять ветку модуля из `student/gerasimova-elena/master` перед началом работы;
 - подготовить изменения и сделать commit;
 - отправить изменения на GitHub через push;
-- открыть pull request (PR) в свою личную основную ветку;
-- понимать базовый процесс ревью.
+- открыть pull request (PR) в личную основную ветку студентки;
+- понимать базовый процесс ревью и исправлений.
 
 ## Почему это важно для Automation QA
 
@@ -146,78 +146,86 @@ git log --oneline
 
 Ветка (branch) — это отдельная линия работы. Она позволяет выполнять задачу изолированно и не добавлять незавершённые изменения прямо в основную ветку.
 
-В этом курсе у студента есть личная основная ветка и отдельные ветки для домашних заданий по модулям. Такой подход помогает не смешивать задания и отправлять каждую работу на отдельное ревью.
+В этом курсе у студентки уже подготовлены личная основная ветка и отдельные ветки для домашних заданий по модулям. Такой подход помогает не смешивать задания и отправлять каждую работу на отдельное ревью.
 
 ```bash
 git branch
-git switch student/<student-name>/master
-git switch -c student/<student-name>/module-02-git
+git switch student/gerasimova-elena/master
+git switch student/gerasimova-elena/module-02-git
 ```
 
 В некоторых старых материалах используется команда `git checkout`. В этом курсе для переключения веток мы предпочитаем `git switch`, потому что она понятнее для новичков.
 
-## 6. Как будет организована работа с домашними заданиями
+## Как устроены ветки для домашних заданий
 
-Теорию курса студент читает через GitHub Pages. Этот репозиторий с документацией студент не редактирует и не использует для выполнения домашних заданий.
+Теорию курса студентка читает через GitHub Pages. Практические задания выполняются не в репозитории с документацией курса, а в отдельном homework repository `Pw-Ts-Qa-Hw`: `https://github.com/EugeneChirkun/Pw-Ts-Qa-Hw`.
 
-Практические задания выполняются в отдельном homework repository, который подготовит тьютор. В этом репозитории:
+В homework repository уже подготовлены ветки для Gerasimova Elena. Общая ветка `master` остаётся чистой стартовой версией репозитория. Для работы студентки используется личная основная ветка `student/gerasimova-elena/master`, а для каждого модуля — отдельная ветка задания. Работать нужно только в ветке текущего модуля.
 
-- ветка `master` остаётся чистой стартовой версией;
-- у студента есть личная основная ветка `student/<student-name>/master`;
-- каждое домашнее задание выполняется в отдельной ветке модуля;
-- каждое задание отправляется через pull request;
-- ревью тьютора — часть учебного процесса;
-- после одобрения PR изменения попадают в личную основную ветку студента;
-- следующий модуль начинается от обновлённой ветки `student/<student-name>/master`.
+Pull request по домашнему заданию всегда открывается в `student/gerasimova-elena/master`. После ревью и merge следующий модуль начинается от обновлённой ветки `student/gerasimova-elena/master`.
 
-Студент не должен объединять домашние задания в общий `master` репозитория.
+| Ветка                                  | Для чего используется                                                                      |
+| -------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `master`                               | Чистая стартовая ветка homework repository. Студентка в неё не отправляет домашние задания |
+| `student/gerasimova-elena/master`      | Личная основная ветка студентки. В неё мержатся проверенные домашние задания               |
+| `student/gerasimova-elena/module-XX-*` | Ветка для выполнения конкретного модуля                                                    |
+| `solution/module-XX-*`                 | Возможные ветки с примерами решений тьютора, если они будут добавлены позже                |
 
-## 7. Модель веток в homework repository
+Подготовленные ветки студентки:
 
-| Ветка                                   | Для чего используется                            |
-| --------------------------------------- | ------------------------------------------------ |
-| `master`                                | Чистая стартовая версия homework repository      |
-| `solution/module-XX-name`               | Пример решения от тьютора                        |
-| `student/<student-name>/master`         | Личная основная ветка студента                   |
-| `student/<student-name>/module-XX-name` | Ветка студента для конкретного домашнего задания |
+- `student/gerasimova-elena/master`;
+- `student/gerasimova-elena/module-01-environment`;
+- `student/gerasimova-elena/module-02-git`;
+- `student/gerasimova-elena/module-03-typescript-basics`;
+- `student/gerasimova-elena/module-04-typescript-for-qa`;
+- `student/gerasimova-elena/module-05-async-await-promises`;
+- `student/gerasimova-elena/module-06-oop-basics`;
+- `student/gerasimova-elena/module-07-playwright-basics`;
+- `student/gerasimova-elena/module-08-locators-assertions`;
+- `student/gerasimova-elena/module-09-page-object-model`;
+- `student/gerasimova-elena/module-10-fixtures-test-data-auth`;
+- `student/gerasimova-elena/module-11-api-testing`;
+- `student/gerasimova-elena/module-12-ci-final-project`.
 
-`master` не используется для домашних заданий студента. Он нужен как чистая стартовая точка homework repository.
+## Первый clone homework repository
 
-Pull requests студента должны идти в `student/<student-name>/master`, а не в `master`.
-
-Ветки `solution/module-XX-name` — это примеры решений от тьютора. Их стоит смотреть только тогда, когда тьютор разрешил или попросил сравнить своё решение с примером.
-
-## 8. Первый старт в homework repository
-
-Homework repository для практики по курсу:
-
-`https://github.com/EugeneChirkun/Pw-Ts-Qa-Hw`
-
-Первый старт выполняется один раз в начале работы с homework repository:
+Первый clone выполняется для homework repository, где студентка делает практические задания. Это не репозиторий с документацией курса.
 
 ```bash
 git clone https://github.com/EugeneChirkun/Pw-Ts-Qa-Hw
 cd Pw-Ts-Qa-Hw
 git fetch origin
-git switch -c student/<student-name>/master origin/master
-git push -u origin student/<student-name>/master
 ```
 
-Эти команды создают личную основную ветку студента от чистого `master` и отправляют её на GitHub.
-
-## 9. Как начать задание по модулю
-
-Каждый модуль нужно начинать от актуальной версии личной основной ветки студента. Для Module 02 это выглядит так:
+После clone нужно проверить доступные удалённые ветки:
 
 ```bash
-git switch student/<student-name>/master
-git pull origin student/<student-name>/master
-git switch -c student/<student-name>/module-02-git
+git branch -r
 ```
 
-Не создавайте ветки модулей напрямую от `master` после того, как личная ветка `student/<student-name>/master` уже создана. Иначе в новой ветке может не оказаться результатов предыдущих домашних заданий.
+## Как начать работу над модулем
 
-## 10. Как отправить задание на ревью
+Перед созданием или редактированием файлов для текущего модуля нужно обновить ветку модуля из личной основной ветки студентки. Это переносит в текущую ветку уже проверенные домашние задания и не даёт начать модуль от устаревшего состояния.
+
+Пример для Module 02:
+
+```bash
+git fetch origin
+
+git switch student/gerasimova-elena/master
+git pull origin student/gerasimova-elena/master
+
+git switch student/gerasimova-elena/module-02-git
+git merge origin/student/gerasimova-elena/master
+git push
+```
+
+Если новых изменений нет, Git может сообщить, что всё уже актуально. Это нормальный результат.
+
+!!! warning "Сначала обновить ветку, потом выполнять задание"
+    После merge предыдущего домашнего задания в `student/gerasimova-elena/master` нужно сначала обновить ветку текущего модуля через `git merge origin/student/gerasimova-elena/master`. Только после этого можно создавать файлы или писать решение для текущего модуля.
+
+## Как выполнить задание и отправить на ревью
 
 После выполнения задания проверьте изменения, сделайте commit и отправьте ветку на GitHub:
 
@@ -225,65 +233,81 @@ git switch -c student/<student-name>/module-02-git
 git status
 git add .
 git commit -m "Complete module 02 Git homework"
-git push -u origin student/<student-name>/module-02-git
+git push
 ```
 
 Pull request нужно открыть с таким направлением:
 
 ```text
-base: student/<student-name>/master
-compare: student/<student-name>/module-02-git
+base: student/gerasimova-elena/master
+compare: student/gerasimova-elena/module-02-git
 ```
 
-Это значит, что изменения из ветки задания попадут в личную основную ветку студента после ревью и merge.
+PR открывается из ветки текущего модуля в личную основную ветку Елены. Репозиторий `master` не используется как цель PR для домашних заданий. Если после ревью тьютор попросит внести исправления, их нужно делать в той же ветке модуля. После push существующий PR обновится автоматически.
 
-## 11. Как внести исправления после ревью
+## Как внести исправления после ревью
 
-Если тьютор оставил комментарии, продолжайте работать в той же ветке модуля. Не создавайте новую ветку для исправлений по тому же заданию.
-
-После правок выполните:
+Не создавайте новую ветку для исправлений по тому же заданию. Продолжайте работать в ветке Module 02:
 
 ```bash
+git switch student/gerasimova-elena/module-02-git
+
+# edit files
+
 git status
 git add .
 git commit -m "Address review comments"
 git push
 ```
 
-Pull request обновится автоматически после push.
+После push существующий PR обновится автоматически.
 
-## 12. Как начать следующий модуль после merge
+## Что делать после merge домашнего задания
 
-После того как PR одобрен и объединён в `student/<student-name>/master`, следующий модуль нужно начинать от обновлённой личной основной ветки.
+После того как PR текущего модуля объединён в `student/gerasimova-elena/master`, перед началом следующего модуля нужно обновить следующую ветку задания из личной основной ветки.
 
 Пример для Module 03:
 
 ```bash
-git switch student/<student-name>/master
-git pull origin student/<student-name>/master
-git switch -c student/<student-name>/module-03-typescript-basics
-```
-
-Так новый модуль начнётся с учётом уже принятой работы по предыдущим модулям.
-
-## 13. Как смотреть примеры решений тьютора
-
-Тьютор может создать ветки с примерами решений, например `solution/module-02-git`. Это учебные примеры, а не замена самостоятельному выполнению домашнего задания.
-
-Смотрите такие ветки только тогда, когда тьютор разрешил или попросил это сделать.
-
-```bash
 git fetch origin
-git switch solution/module-02-git
+
+git switch student/gerasimova-elena/master
+git pull origin student/gerasimova-elena/master
+
+git switch student/gerasimova-elena/module-03-typescript-basics
+git merge origin/student/gerasimova-elena/master
+git push
 ```
 
-Чтобы вернуться к своей ветке задания:
+После этого можно начинать домашнее задание Module 03.
+
+## Как переключаться между ветками
+
+Перед переключением всегда проверяйте текущую ветку и состояние рабочей области. Не стоит переключаться между ветками, если есть незавершённые несохранённые изменения.
 
 ```bash
-git switch student/<student-name>/module-02-git
+git branch --show-current
+git status
+git switch student/gerasimova-elena/master
+git switch student/gerasimova-elena/module-02-git
 ```
 
-## 14. Базовые команды Git для ежедневной работы
+`git branch --show-current` показывает текущую ветку. `git status` показывает изменённые файлы и подсказывает, есть ли uncommitted changes. Если есть незакоммиченные изменения, сделайте commit или уточните у тьютора, как лучше поступить перед переключением.
+
+## Где хранить домашние задания
+
+В ранних модулях результат обычно хранится в `homework/module-XX-.../result.md`. Скриншоты, если они нужны по заданию, кладутся в папку `screenshots/` внутри папки соответствующего модуля. Позже упражнения по TypeScript могут находиться в `homework/module-XX-.../exercises/`, а Playwright tests — в `tests/`. Page Objects, helpers и fixtures позже будут находиться в `src/`.
+
+| Модуль       | Где выполнять результат                                               |
+| ------------ | --------------------------------------------------------------------- |
+| Module 01    | `homework/module-01-environment/result.md` и скриншоты, если они нужны  |
+| Module 02    | `homework/module-02-git/result.md`                                    |
+| Module 03–06 | `homework/module-XX-.../exercises/` или `result.md`, в зависимости от задания |
+| Module 07–12 | `tests/`, `src/` и заметки по модулю, в зависимости от задания                  |
+
+Для Module 02 основной файл результата — `homework/module-02-git/result.md`.
+
+## Базовые команды Git для ежедневной работы
 
 | Команда | Для чего используется |
 | --- | --- |
@@ -292,17 +316,16 @@ git switch student/<student-name>/module-02-git
 | `git commit -m "..."` | Сохранить подготовленные изменения в истории Git. |
 | `git log --oneline` | Посмотреть краткую историю commit. |
 | `git branch` | Показать локальные ветки. |
+| `git branch --show-current` | Показать название текущей ветки. |
 | `git switch <branch-name>` | Переключиться на существующую ветку. |
-| `git switch -c <branch-name>` | Создать новую ветку и сразу перейти в неё. |
 | `git fetch origin` | Получить информацию об изменениях из удалённого репозитория. |
-| `git pull` | Получить и применить изменения из удалённой ветки. |
+| `git pull origin <branch-name>` | Получить и применить изменения из указанной удалённой ветки. |
 | `git push` | Отправить локальные commit на GitHub. |
-| `git push -u origin <branch-name>` | Отправить новую ветку на GitHub и связать её с удалённой веткой. |
-| `git merge origin/master` | Влить изменения из `origin/master` в текущую ветку. |
+| `git merge origin/student/gerasimova-elena/master` | Влить изменения из личной основной ветки студентки в текущую ветку модуля. |
 
-## 15. Pull request и ревью
+## Pull request и ревью
 
-Pull request (PR) — это запрос на добавление изменений из одной ветки в другую. В этом курсе PR для задания модуля открывается из ветки `student/<student-name>/module-XX-name` в ветку `student/<student-name>/master`.
+Pull request (PR) — это запрос на добавление изменений из одной ветки в другую. В этом курсе PR для задания модуля открывается из ветки `student/gerasimova-elena/module-XX-*` в ветку `student/gerasimova-elena/master`.
 
 Ревью — нормальная часть обучения. Комментарии, вопросы и просьбы внести изменения не означают, что работа плохая. Это способ улучшить решение и закрепить профессиональный рабочий процесс.
 
@@ -310,42 +333,20 @@ Pull request (PR) — это запрос на добавление измене
 
 ```text
 clone homework repository
-→ создать student/<student-name>/master
-→ создать ветку модуля от student/<student-name>/master
+→ перейти в student/gerasimova-elena/master
+→ обновить student/gerasimova-elena/master
+→ перейти в подготовленную ветку модуля
+→ выполнить merge origin/student/gerasimova-elena/master
 → выполнить задание
 → commit
 → push
-→ открыть pull request в student/<student-name>/master
+→ открыть pull request в student/gerasimova-elena/master
 → получить ревью
 → внести исправления после ревью
 → merge после одобрения
 ```
 
-## 16. Как обновить ветку задания от личной основной ветки
-
-Пока студент работает над заданием, личная основная ветка `student/<student-name>/master` может измениться: например, после merge предыдущего PR. Перед продолжением работы полезно подтянуть свежие изменения.
-
-Для новичков в этом модуле используем подход через merge:
-
-```bash
-git fetch origin
-git switch student/<student-name>/module-02-git
-git merge origin/student/<student-name>/master
-```
-
-Если появились конфликты, Git покажет файлы, где изменения пересеклись. Конфликты нужно решать вручную: открыть файл, прочитать оба варианта, оставить правильный результат и удалить служебные маркеры конфликта.
-
-После решения конфликтов выполните:
-
-```bash
-git add .
-git commit
-git push
-```
-
-Команда `rebase` тоже существует, но она требует более уверенного понимания истории Git. Мы вернёмся к ней позже или будем использовать её для более опытных студентов.
-
-## 17. .gitignore
+## .gitignore
 
 `.gitignore` сообщает Git, какие файлы и папки не нужно добавлять в repository. Обычно туда попадают локальные, временные или сгенерированные файлы.
 
@@ -355,41 +356,46 @@ git push
 - `.env`
 - `.vs/`
 - `site/`
+- `playwright-report/`
+- `test-results/`
 
 Особенно важно не добавлять `node_modules`. Эта папка создаётся командой `npm install`, занимает много места и может содержать тысячи файлов. Зависимости восстанавливаются по файлам `package.json` и `package-lock.json`, поэтому `node_modules` не должен попадать в commit.
 
-## 18. Где используется fork
+## Где используется fork
 
 Fork — это копия чужого репозитория GitHub в аккаунте пользователя. Такой подход часто используется в open-source или во внешней совместной работе, когда у участника нет прав на запись в исходный репозиторий.
 
-В этом курсе fork не является основным способом выполнения домашних заданий. Основной процесс — личные ветки студента и pull requests внутри homework repository.
+В этом курсе fork не является основным способом выполнения домашних заданий. Основной процесс — личные ветки студентки и pull requests внутри homework repository.
 
-## 19. Типичные ошибки
+## Частые ошибки
 
-- Работать напрямую в общем `master` homework repository.
-- Создавать ветку модуля от `master`, когда уже есть `student/<student-name>/master`.
-- Открывать PR в `master` вместо `student/<student-name>/master`.
+- Работать напрямую в `master`.
+- Открывать PR в repository `master`.
+- Начинать модуль без merge `origin/student/gerasimova-elena/master` в ветку модуля.
+- Создавать новую ветку вместо использования подготовленной ветки модуля.
+- Переключаться между ветками с незакоммиченными изменениями.
 - Добавлять `node_modules` в Git.
+- Добавлять Playwright reports или другие сгенерированные артефакты.
 - Сделать commit, но забыть выполнить push.
-- Забыть обновить личную основную ветку перед началом следующего модуля.
-- Писать непонятные сообщения commit.
-- Добавлять в commit файлы, не связанные с задачей.
-- Решать конфликты механически, не читая содержимое файлов.
+- Смешивать несколько несвязанных изменений в одном commit.
+- Удалять или переименовывать папки модулей без инструкции.
 
 ## Практика на занятии
 
 1. Проверить версию Git командой `git --version`.
 2. Настроить имя и email для Git.
 3. Выполнить clone homework repository по ссылке `https://github.com/EugeneChirkun/Pw-Ts-Qa-Hw`.
-4. Создать личную основную ветку `student/<student-name>/master`.
-5. Создать ветку `student/<student-name>/module-02-git` от личной основной ветки.
-6. Создать или обновить `homework/module-02-git/result.md`.
-7. Проверить состояние через `git status`.
-8. Сделать commit с понятным сообщением.
-9. Отправить ветку на GitHub через push.
-10. Открыть pull request в `student/<student-name>/master`.
-11. Обсудить, как вносить исправления после ревью.
-12. Проверить `.gitignore` и убедиться, что `node_modules` не попадает в Git.
+4. Проверить доступные ветки через `git branch -r`.
+5. Переключиться на `student/gerasimova-elena/master` и обновить её.
+6. Переключиться на `student/gerasimova-elena/module-02-git`.
+7. Выполнить `git merge origin/student/gerasimova-elena/master` до начала работы над файлами.
+8. Создать или обновить `homework/module-02-git/result.md`.
+9. Проверить состояние через `git status`.
+10. Сделать commit с понятным сообщением.
+11. Отправить ветку на GitHub через push.
+12. Открыть pull request в `student/gerasimova-elena/master`.
+13. Обсудить, как вносить исправления после ревью.
+14. Проверить `.gitignore` и убедиться, что `node_modules` не попадает в Git.
 
 ## Вопросы для проверки понимания
 
@@ -401,11 +407,12 @@ Fork — это копия чужого репозитория GitHub в акк�
 - Чем Git в базовой модели отличается от SVN?
 - Что такое repository?
 - Чем локальный репозиторий (local repository) отличается от удалённого репозитория (remote repository)?
-- Почему студент не редактирует репозиторий с документацией курса?
+- Почему студентка не работает с домашними заданиями в репозитории с документацией курса?
 - Для чего нужен отдельный homework repository?
 - Почему общий `master` homework repository должен оставаться чистым?
-- Для чего нужна ветка `student/<student-name>/master`?
-- От какой ветки нужно начинать задание по новому модулю?
+- Для чего нужна ветка `student/gerasimova-elena/master`?
+- В какой ветке выполняется Module 02?
+- Как обновить ветку Module 02 перед началом работы?
 - В какую ветку нужно открывать PR по домашнему заданию?
 - Что такое commit?
 - Что такое staging area?
@@ -419,4 +426,4 @@ Fork — это копия чужого репозитория GitHub в акк�
 
 ## Краткий итог
 
-В этом модуле студент разобрал базовый рабочий процесс Git для курса: clone homework repository, создание `student/<student-name>/master`, создание ветки модуля, commit, push и pull request в личную основную ветку. GitHub рассматривается как основная платформа курса для домашних заданий, а GitLab, Azure Repos, Bitbucket и SVN / Subversion — как полезный общий контекст. Fork остаётся дополнительным GitHub-сценарием, а не основным способом сдачи домашних заданий.
+В этом модуле студентка разобрала базовый рабочий процесс Git для курса: clone homework repository, переключение на подготовленные ветки, обновление ветки модуля из `student/gerasimova-elena/master`, commit, push и pull request в личную основную ветку. GitHub рассматривается как основная платформа курса для домашних заданий, а GitLab, Azure Repos, Bitbucket и SVN / Subversion — как полезный общий контекст. Fork остаётся дополнительным GitHub-сценарием, а не основным способом сдачи домашних заданий.

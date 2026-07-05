@@ -5,12 +5,17 @@
 Цель — отработать реальный процесс сдачи домашних заданий в этом курсе:
 
 - склонировать репозиторий для домашних заданий;
-- переключиться на правильную подготовленную ветку модуля;
-- обновить ветку модуля из `student/gerasimova-elena/master`;
-- выполнить задание;
+- проверить подготовленные удалённые ветки;
+- переключиться на личную master-ветку;
+- обновить личную master-ветку;
+- переключиться на ветку Module 02;
+- обновить ветку Module 02 из личной master-ветки до начала работы;
+- заполнить результат задания;
 - сделать commit;
 - отправить изменения на GitHub через push;
-- открыть PR в `student/gerasimova-elena/master`.
+- открыть PR в личную master-ветку.
+
+`<student-name-slug>` означает имя и фамилию студента, записанные латинскими буквами в нижнем регистре и разделённые дефисами. В командах ниже используйте свой подготовленный slug.
 
 ## Задание 1. Склонировать репозиторий для домашних заданий
 
@@ -24,26 +29,26 @@ git fetch origin
 
 ## Задание 2. Проверить доступные ветки
 
-Ветки студентки уже подготовлены. Проверьте, что они видны локально как удалённые ветки:
+Ветки студента уже подготовлены. Проверьте, что они видны локально как удалённые ветки:
 
 ```bash
-git branch -r | grep "student/gerasimova-elena"
+git branch -r | grep "student/<student-name-slug>"
 ```
 
 ## Задание 3. Переключиться на личную master-ветку и обновить её
 
 ```bash
-git switch student/gerasimova-elena/master
-git pull origin student/gerasimova-elena/master
+git switch student/<student-name-slug>/master
+git pull origin student/<student-name-slug>/master
 ```
 
-`student/gerasimova-elena/master` — личная основная ветка студентки. В неё попадают проверенные и принятые домашние задания.
+`student/<student-name-slug>/master` — личная основная ветка студента. В неё попадают проверенные и принятые домашние задания.
 
 ## Задание 4. Переключиться на ветку Module 02 и обновить её от личной master-ветки
 
 ```bash
-git switch student/gerasimova-elena/module-02-git
-git merge origin/student/gerasimova-elena/master
+git switch student/<student-name-slug>/module-02-git
+git merge origin/student/<student-name-slug>/master
 git push
 ```
 
@@ -72,7 +77,25 @@ homework/module-02-git/result.md
 - ответ: что такое SVN / Subversion и чем он отличается от Git;
 - вопросы или проблемы, если они появились.
 
-## Задание 6. Сделать commit и push
+## Задание 6. Проверить, что такое stash
+
+Добавьте в `homework/module-02-git/result.md` короткие ответы:
+
+- для чего используется `git stash`;
+- когда `git stash` может быть полезен перед переключением веток.
+
+Не используйте stash на реальных изменениях домашнего задания, если не уверены в результате.
+
+Дополнительная необязательная практика:
+
+1. Создайте временный файл.
+2. Выполните `git status`.
+3. Выполните `git stash push -m "test stash"`.
+4. Выполните `git stash list`.
+5. Выполните `git stash pop`.
+6. Удалите временный файл.
+
+## Задание 7. Сделать commit и push
 
 ```bash
 git status
@@ -83,23 +106,23 @@ git push
 
 Перед commit внимательно проверьте `git status`, чтобы в commit попали только нужные файлы.
 
-## Задание 7. Открыть pull request
+## Задание 8. Открыть pull request
 
 Откройте PR с таким направлением:
 
 ```text
-base: student/gerasimova-elena/master
-compare: student/gerasimova-elena/module-02-git
+base: student/<student-name-slug>/master
+compare: student/<student-name-slug>/module-02-git
 ```
 
-Не открывайте PR в ветку `master` репозитория. Домашние задания объединяются в личную основную ветку `student/gerasimova-elena/master`.
+Не открывайте PR в ветку `master` репозитория. Домашние задания объединяются в личную основную ветку `student/<student-name-slug>/master`.
 
-## Задание 8. Если есть замечания после ревью
+## Задание 9. Если есть замечания после ревью
 
 Исправления после ревью выполняются в той же ветке Module 02. Новую ветку создавать не нужно.
 
 ```bash
-git switch student/gerasimova-elena/module-02-git
+git switch student/<student-name-slug>/module-02-git
 
 # edit files
 
@@ -116,12 +139,12 @@ git push
 К концу задания должно быть готово:
 
 - репозиторий для домашних заданий склонирован;
-- использована правильная ветка `student/gerasimova-elena/module-02-git`;
-- ветка модуля обновлена из `student/gerasimova-elena/master` до начала работы;
+- использована правильная ветка `student/<student-name-slug>/module-02-git`;
+- ветка модуля обновлена из `student/<student-name-slug>/master` до начала работы;
 - файл `homework/module-02-git/result.md` заполнен;
 - commit создан;
 - изменения отправлены на GitHub;
-- PR открыт в `student/gerasimova-elena/master`;
+- PR открыт в `student/<student-name-slug>/master`;
 - `node_modules` не добавлен в Git;
 - сгенерированные отчёты и артефакты не добавлены в Git.
 
@@ -139,4 +162,4 @@ git push
 
 Fork полезен в open-source или в ситуациях, когда у участника нет прав на запись в исходный репозиторий.
 
-В этом курсе fork — дополнительное понятие, а не основной способ выполнения домашних заданий. Основной процесс — работа в подготовленных ветках студентки внутри репозитория для домашних заданий.
+В этом курсе fork — дополнительное понятие, а не основной способ выполнения домашних заданий. Основной процесс — работа в подготовленных ветках студента внутри репозитория для домашних заданий.

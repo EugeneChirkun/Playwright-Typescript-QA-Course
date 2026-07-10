@@ -6,24 +6,26 @@
 
 Вам нужно:
 
-- работать в ветке `student/<student-name-slug>/module-03-typescript-basics`;
-- перед началом обновить эту ветку из `student/<student-name-slug>/master`;
+- работать в ветке `student/{student-name-slug}/module-03-typescript-basics`;
+- перед началом обновить эту ветку из `student/{student-name-slug}/master`;
 - создать TypeScript-файлы с упражнениями;
 - запустить typecheck;
-- открыть PR в `student/<student-name-slug>/master`.
+- открыть PR в `student/{student-name-slug}/master`.
+
+`{student-name-slug}` означает имя и фамилию студента, написанные латинскими строчными буквами и разделённые дефисами.
 
 ## Задание 1. Подготовить ветку модуля 03
 
 Выполните команды перед созданием или редактированием файлов для модуля 03:
 
-```bash id="0tqo7t"
+```bash
 git fetch origin
 
-git switch student/<student-name-slug>/master
-git pull origin student/<student-name-slug>/master
+git switch student/{student-name-slug}/master
+git pull origin student/{student-name-slug}/master
 
-git switch student/<student-name-slug>/module-03-typescript-basics
-git merge origin/student/<student-name-slug>/master
+git switch student/{student-name-slug}/module-03-typescript-basics
+git merge origin/student/{student-name-slug}/master
 git push
 ```
 
@@ -33,13 +35,13 @@ git push
 
 Создайте папку:
 
-```text id="ubgqpl"
+```text
 homework/module-03-typescript-basics/exercises/
 ```
 
 Создайте файлы:
 
-```text id="v1lhng"
+```text
 homework/module-03-typescript-basics/exercises/01-variables.ts
 homework/module-03-typescript-basics/exercises/02-arrays.ts
 homework/module-03-typescript-basics/exercises/03-objects.ts
@@ -63,7 +65,7 @@ homework/module-03-typescript-basics/result.md
 
 Также добавьте одну намеренно неправильную строку, закомментируйте её и объясните в `result.md`, почему она неправильная.
 
-```ts id="9i1i2x"
+```ts
 // const retryCount: number = 'three';
 ```
 
@@ -128,7 +130,7 @@ homework/module-03-typescript-basics/result.md
 
 Запустите проверку типов:
 
-```bash id="rha1ad"
+```bash
 npm run typecheck
 ```
 
@@ -151,7 +153,7 @@ npm run typecheck
 
 Выполните команды:
 
-```bash id="ktlxvw"
+```bash
 git status
 git add .
 git commit -m "Complete module 03 TypeScript basics homework"
@@ -160,9 +162,9 @@ git push
 
 Откройте PR:
 
-```text id="4ufbjg"
-base: student/<student-name-slug>/master
-compare: student/<student-name-slug>/module-03-typescript-basics
+```text
+base: student/{student-name-slug}/master
+compare: student/{student-name-slug}/module-03-typescript-basics
 ```
 
 Ожидаемый результат:

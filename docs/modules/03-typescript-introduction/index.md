@@ -52,7 +52,7 @@ TypeScript — это расширение JavaScript с типами. TypeScrip
 
 `var` в современном TypeScript обычно не используют: у него менее предсказуемое поведение области видимости, и в новых проектах он почти всегда заменяется на `let` или `const`.
 
-```ts id="g8ov7s"
+```ts
 const baseUrl = 'https://example.com';
 let retryCount = 0;
 
@@ -61,7 +61,7 @@ retryCount = retryCount + 1;
 
 QA-пример:
 
-```ts id="0ccugq"
+```ts
 const userEmail = 'qa.user@example.com';
 const expectedTitle = 'Dashboard';
 let actualTitle = 'Login';
@@ -75,7 +75,7 @@ let actualTitle = 'Login';
 - `number` — число, например таймаут, код ответа или количество попыток;
 - `boolean` — логическое значение `true` или `false`, например признак активного пользователя.
 
-```ts id="su9e17"
+```ts
 const userName: string = 'Test User';
 const userAge: number = 30;
 const isActive: boolean = true;
@@ -83,7 +83,7 @@ const isActive: boolean = true;
 
 Во многих случаях TypeScript сам понимает тип по значению. Это называется type inference.
 
-```ts id="2m886u"
+```ts
 const browserName = 'chromium';
 const timeout = 5000;
 const isLoggedIn = false;
@@ -93,7 +93,7 @@ const isLoggedIn = false;
 
 Массив хранит список значений одного типа. В QA-коде массивы часто используются для списка браузеров, статусов, ролей, приоритетов или тестовых данных.
 
-```ts id="f9vuhz"
+```ts
 const browsers: string[] = ['chromium', 'firefox', 'webkit'];
 const statusCodes: number[] = [200, 201, 404, 500];
 ```
@@ -104,7 +104,7 @@ const statusCodes: number[] = [200, 201, 404, 500];
 - проверять длину: `browsers.length`;
 - проходить по элементам через `for...of`.
 
-```ts id="pajknn"
+```ts
 for (const browser of browsers) {
   console.log(browser);
 }
@@ -114,7 +114,7 @@ for (const browser of browsers) {
 
 Объект хранит связанные поля: имена полей и значения. Это удобно для тестовых данных, потому что данные пользователя, тест-кейса или настройки можно держать вместе.
 
-```ts id="4s5zgm"
+```ts
 const user = {
   email: 'qa.user@example.com',
   password: 'Password123!',
@@ -124,7 +124,7 @@ const user = {
 
 К полю объекта можно обратиться через точку:
 
-```ts id="hhcymp"
+```ts
 console.log(user.email);
 ```
 
@@ -132,7 +132,7 @@ console.log(user.email);
 
 Функция — это переиспользуемая логика. Функция может получать параметры и возвращать значение. В тестовом коде функции помогают не копировать одинаковые действия и вычисления.
 
-```ts id="hh4ljv"
+```ts
 function createUserEmail(prefix: string): string {
   return `${prefix}@example.com`;
 }
@@ -142,7 +142,7 @@ const email = createUserEmail('qa.user');
 
 QA-пример:
 
-```ts id="42vr6a"
+```ts
 function isSuccessStatus(statusCode: number): boolean {
   return statusCode >= 200 && statusCode < 300;
 }
@@ -154,7 +154,7 @@ Type annotation — это явное указание типа. Type inference 
 
 Не нужно добавлять типы везде, если TypeScript уже хорошо понимает код. Лучше добавлять типы там, где они улучшают читаемость: у параметров функций, возвращаемого значения функции или сложных объектов.
 
-```ts id="shys1m"
+```ts
 const pageTitle = 'Login';
 const maxRetries = 3;
 
@@ -167,7 +167,7 @@ function getExpectedMessage(userName: string): string {
 
 `type` позволяет создать именованное описание данных. Это полезно для тестовых данных: можно один раз описать форму объекта и затем использовать её в разных местах.
 
-```ts id="sgjyhh"
+```ts
 type TestUser = {
   email: string;
   password: string;
@@ -185,7 +185,7 @@ const adminUser: TestUser = {
 
 `interface` тоже описывает форму объекта. На этом этапе курса можно использовать и `type`, и `interface` для простых структур данных. Глубокие различия между ними пока не нужны: важно научиться читать и создавать понятные описания объектов.
 
-```ts id="eyii9s"
+```ts
 interface LoginCredentials {
   email: string;
   password: string;
@@ -201,7 +201,7 @@ const credentials: LoginCredentials = {
 
 Optional property — это необязательное поле. Оно может быть в объекте, а может отсутствовать. Символ `?` показывает, что поле необязательное.
 
-```ts id="xr90ri"
+```ts
 type TestCase = {
   id: string;
   title: string;
@@ -213,7 +213,7 @@ type TestCase = {
 
 Union type означает, что переменная или поле может принимать одно из нескольких разрешённых значений. Это удобно для статусов, ролей и приоритетов: TypeScript не даст случайно написать значение, которого нет в списке.
 
-```ts id="mu5nqa"
+```ts
 type TestStatus = 'passed' | 'failed' | 'skipped';
 
 const status: TestStatus = 'passed';
@@ -221,7 +221,7 @@ const status: TestStatus = 'passed';
 
 QA-пример:
 
-```ts id="e9g28k"
+```ts
 type UserRole = 'admin' | 'manager' | 'viewer';
 ```
 
@@ -231,7 +231,7 @@ type UserRole = 'admin' | 'manager' | 'viewer';
 
 Пример намеренной ошибки:
 
-```ts id="3ptnyk"
+```ts
 const retryCount: number = 'three';
 ```
 
@@ -306,20 +306,22 @@ const highPriorityTestCases = testCases.filter((testCase) => testCase.priority =
 9. Создайте `type` и `interface`.
 10. Запустите TypeScript typecheck.
 
-```bash id="3twml4"
+```bash
 git fetch origin
 
-git switch student/<student-name-slug>/master
-git pull origin student/<student-name-slug>/master
+git switch student/{student-name-slug}/master
+git pull origin student/{student-name-slug}/master
 
-git switch student/<student-name-slug>/module-03-typescript-basics
-git merge origin/student/<student-name-slug>/master
+git switch student/{student-name-slug}/module-03-typescript-basics
+git merge origin/student/{student-name-slug}/master
 git push
 ```
 
+`{student-name-slug}` означает имя и фамилию студента, написанные латинскими строчными буквами и разделённые дефисами.
+
 Затем запустите проверку типов:
 
-```bash id="odg33n"
+```bash
 npm run typecheck
 ```
 

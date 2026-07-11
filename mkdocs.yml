@@ -32,3 +32,8 @@ nav:
         - 'Домашнее задание': 'modules/03-typescript-introduction/homework.md'
         - 'Чеклист': 'modules/03-typescript-introduction/checklist.md'
         - 'Ресурсы': 'modules/03-typescript-introduction/resources.md'
+    - '04. TypeScript для QA':
+        - 'Обзор': 'modules/04-typescript-for-qa/index.md'
+        - 'Домашнее задание': 'modules/04-typescript-for-qa/homework.md'
+        - 'Чеклист': 'modules/04-typescript-for-qa/checklist.md'
+        - 'Ресурсы': 'modules/04-typescript-for-qa/resources.md'

@@ -4,7 +4,7 @@
 | --- | --- | --- | --- |
 | Модуль 01 | Окружение: Node.js, npm, VS Code и Playwright | Подготовка рабочего окружения | Студент готов установить инструменты и проверить базовую настройку. |
 | Модуль 02 | Git: branches и основные команды | Базовый Git workflow | Студент уверенно работает с branch, commit и pull request. |
-| [Модуль 03](modules/03-typescript-introduction/index.md) | TypeScript: основы | Базовый синтаксис и типизация | Студент понимает базовый синтаксис TypeScript и пишет простой типизированный код. |
+| [Модуль 03](modules/03-typescript-introduction/index.md) | JavaScript и TypeScript: основы | Минимальная база JavaScript и первые основы TypeScript | Студент понимает базовые конструкции JavaScript и пишет простой типизированный код. |
 | Модуль 04 | TypeScript для QA | Типы и структуры для автоматизации тестирования | Студент применяет TypeScript в QA-сценариях. |
 | Модуль 05 | Async, await и promises | Асинхронность в тестах | Студент понимает async flow в автоматизированных тестах. |
 | Модуль 06 | Основы OOP | Classes и objects | Студент готов к Page Object Model. |

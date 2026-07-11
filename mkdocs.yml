@@ -27,7 +27,7 @@ nav:
         - 'Домашнее задание': 'modules/02-git-branches-main-commands/homework.md'
         - 'Чеклист': 'modules/02-git-branches-main-commands/checklist.md'
         - 'Ресурсы': 'modules/02-git-branches-main-commands/resources.md'
-    - '03. TypeScript: основы':
+    - '03. JavaScript и TypeScript: основы':
         - 'Обзор': 'modules/03-typescript-introduction/index.md'
         - 'Домашнее задание': 'modules/03-typescript-introduction/homework.md'
         - 'Чеклист': 'modules/03-typescript-introduction/checklist.md'

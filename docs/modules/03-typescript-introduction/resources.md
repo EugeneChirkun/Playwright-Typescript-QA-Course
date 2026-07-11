@@ -1,22 +1,36 @@
 # Ресурсы: Модуль 03
 
-## Официальная документация
+## JavaScript для начинающих
 
-- [TypeScript official website](https://www.typescriptlang.org/) — официальный сайт TypeScript: обзор языка, ссылки на документацию и инструменты.
+- [MDN JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide) — подробное руководство по JavaScript от MDN: синтаксис, базовые конструкции, объекты, функции и другие основы языка.
+- [MDN JavaScript basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) — короткое и дружелюбное введение в JavaScript для первого знакомства с переменными, строками, числами и условиями.
+
+## TypeScript
+
+- [TypeScript official website](https://www.typescriptlang.org/) — официальный сайт TypeScript с описанием языка, ссылками на документацию и инструментами.
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html) — основное руководство по TypeScript от авторов языка.
-- [TypeScript Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html) — раздел про базовые типы, массивы, union types и другие ежедневные конструкции.
+- [TypeScript Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html) — раздел про базовые типы, массивы, union types и другие конструкции, которые часто встречаются в обычном коде.
 - [TypeScript Object Types](https://www.typescriptlang.org/docs/handbook/2/objects.html) — раздел про типизацию объектов, свойства и структуры данных.
-- [TypeScript Playground](https://www.typescriptlang.org/play) — онлайн-песочница, где можно быстро проверить TypeScript-код без настройки проекта.
-- [VS Code TypeScript docs](https://code.visualstudio.com/docs/languages/typescript) — документация VS Code о поддержке TypeScript, подсказках, навигации и ошибках.
-
-## Видео
-
-- [TypeScript для начинающих](https://youtu.be/LWtHl__oEWc) — короткое видео для первого знакомства с TypeScript.
-- [Плейлист по TypeScript](https://youtube.com/playlist?list=PL0MUAHwery4qn4Y27iUxmzC-JiauX7vSL&si=a7w6dvsdiV8MMSOd) — серия уроков для последовательного изучения базовых возможностей TypeScript.
-- [Плейлист по TypeScript и JavaScript](https://youtube.com/playlist?list=PLDyJYA6aTY1kJIwbYHzGOuvSMNTfqksmk&si=0CpVE0WohQY7G9mT) — дополнительные объяснения синтаксиса и типизации.
-- [TypeScript Tutorial](https://youtube.com/playlist?list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&si=eZIqvhRCGFKuonYo) — англоязычный плейлист для закрепления базовых тем.
+- [TypeScript Playground](https://www.typescriptlang.org/play) — онлайн-песочница, где можно быстро проверить небольшой TypeScript-пример без настройки проекта.
 
 ## Инструменты
 
-- VS Code — основной редактор для чтения TypeScript-подсказок и ошибок.
-- TypeScript Playground — быстрый способ проверить маленький пример кода.
+- [VS Code TypeScript docs](https://code.visualstudio.com/docs/languages/typescript) — документация VS Code о поддержке TypeScript, подсказках, навигации по коду и отображении ошибок.
+
+## Дополнительная практика
+
+- [Codewars](https://www.codewars.com/) — платформа с небольшими задачами по программированию. Можно использовать для дополнительной практики JavaScript и TypeScript. Для начала выбирайте простые задачи уровня `8 kyu` и не пытайтесь сразу решать сложные алгоритмические задачи.
+
+Codewars полезен для тренировки синтаксиса, функций, условий, массивов и простых объектов. Это дополнительная практика, а не замена домашним заданиям курса.
+
+Для модуля 03 лучше выбирать задачи, где нужно потренировать:
+
+- переменные;
+- строки;
+- числа;
+- boolean;
+- массивы;
+- объекты;
+- функции;
+- `if`;
+- циклы.

@@ -24,7 +24,7 @@
 
 - [Модуль 01: Окружение, Node.js, npm, VS Code и Playwright](modules/01-environment-node-npm-vscode-playwright/index.md)
 - [Модуль 02: Git и ветки](modules/02-git-branches-main-commands/index.md)
-- [Модуль 03: TypeScript — основы](modules/03-typescript-introduction/index.md)
+- [Модуль 03: JavaScript и TypeScript — основы](modules/03-typescript-introduction/index.md)
 
 ## Следующие модули
 

@@ -37,3 +37,8 @@ nav:
         - 'Домашнее задание': 'modules/04-typescript-for-qa/homework.md'
         - 'Чеклист': 'modules/04-typescript-for-qa/checklist.md'
         - 'Ресурсы': 'modules/04-typescript-for-qa/resources.md'
+    - '05. Async/await и Promise':
+        - 'Обзор': 'modules/05-async-await-promises/index.md'
+        - 'Домашнее задание': 'modules/05-async-await-promises/homework.md'
+        - 'Чеклист': 'modules/05-async-await-promises/checklist.md'
+        - 'Ресурсы': 'modules/05-async-await-promises/resources.md'

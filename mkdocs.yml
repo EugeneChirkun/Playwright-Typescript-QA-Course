@@ -51,3 +51,8 @@ nav:
         - 'Домашнее задание': 'modules/07-playwright-basics/homework.md'
         - 'Чеклист': 'modules/07-playwright-basics/checklist.md'
         - 'Ресурсы': 'modules/07-playwright-basics/resources.md'
+    - '08. Локаторы и проверки':
+        - 'Обзор': 'modules/08-locators-assertions/index.md'
+        - 'Домашнее задание': 'modules/08-locators-assertions/homework.md'
+        - 'Чеклист': 'modules/08-locators-assertions/checklist.md'
+        - 'Ресурсы': 'modules/08-locators-assertions/resources.md'

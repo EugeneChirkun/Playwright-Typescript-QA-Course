@@ -42,3 +42,8 @@ nav:
         - 'Домашнее задание': 'modules/05-async-await-promises/homework.md'
         - 'Чеклист': 'modules/05-async-await-promises/checklist.md'
         - 'Ресурсы': 'modules/05-async-await-promises/resources.md'
+    - '06. ООП: основы':
+        - 'Обзор': 'modules/06-oop-basics/index.md'
+        - 'Домашнее задание': 'modules/06-oop-basics/homework.md'
+        - 'Чеклист': 'modules/06-oop-basics/checklist.md'
+        - 'Ресурсы': 'modules/06-oop-basics/resources.md'

@@ -29,12 +29,12 @@
 - [Модуль 05: Async/await и Promise](modules/05-async-await-promises/index.md)
 - [Модуль 06: ООП — основы](modules/06-oop-basics/index.md)
 - [Модуль 07: Playwright — основы](modules/07-playwright-basics/index.md)
+- [Модуль 08: Локаторы, проверки и auto-waiting](modules/08-locators-assertions/index.md)
 
 ## Следующие модули
 
 Следующие модули находятся в подготовке и будут открываться постепенно:
 
-- Модуль 08: Локаторы и проверки
 - Модуль 09: Page Object Model
 - Модуль 10: Fixtures и тестовые данные
 - Модуль 11: API testing

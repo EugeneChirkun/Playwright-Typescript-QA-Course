@@ -6,7 +6,6 @@ theme:
   language: ru
   features:
     - navigation.sections
-    - navigation.expand
     - navigation.top
     - search.highlight
     - search.suggest
@@ -47,3 +46,8 @@ nav:
         - 'Домашнее задание': 'modules/06-oop-basics/homework.md'
         - 'Чеклист': 'modules/06-oop-basics/checklist.md'
         - 'Ресурсы': 'modules/06-oop-basics/resources.md'
+    - '07. Playwright: основы':
+        - 'Обзор': 'modules/07-playwright-basics/index.md'
+        - 'Домашнее задание': 'modules/07-playwright-basics/homework.md'
+        - 'Чеклист': 'modules/07-playwright-basics/checklist.md'
+        - 'Ресурсы': 'modules/07-playwright-basics/resources.md'

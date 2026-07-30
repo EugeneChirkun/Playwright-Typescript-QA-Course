@@ -27,12 +27,12 @@
 - [Модуль 03: JavaScript и TypeScript — основы](modules/03-typescript-introduction/index.md)
 - [Модуль 04: TypeScript для QA](modules/04-typescript-for-qa/index.md)
 - [Модуль 05: Async/await и Promise](modules/05-async-await-promises/index.md)
+- [Модуль 06: ООП — основы](modules/06-oop-basics/index.md)
 
 ## Следующие модули
 
 Следующие модули находятся в подготовке и будут открываться постепенно:
 
-- Модуль 06: ООП — основы
 - Модуль 07: Playwright — основы
 - Модуль 08: Локаторы и проверки
 - Модуль 09: Page Object Model

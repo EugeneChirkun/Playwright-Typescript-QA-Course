@@ -56,3 +56,8 @@ nav:
         - 'Домашнее задание': 'modules/08-locators-assertions/homework.md'
         - 'Чеклист': 'modules/08-locators-assertions/checklist.md'
         - 'Ресурсы': 'modules/08-locators-assertions/resources.md'
+    - '09. Page Object Model':
+        - 'Обзор': 'modules/09-page-object-model/index.md'
+        - 'Домашнее задание': 'modules/09-page-object-model/homework.md'
+        - 'Чеклист': 'modules/09-page-object-model/checklist.md'
+        - 'Ресурсы': 'modules/09-page-object-model/resources.md'

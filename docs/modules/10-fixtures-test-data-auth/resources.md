@@ -1,18 +1,14 @@
 # Ресурсы: Модуль 10
 
-## Официальная документация
+## Playwright
 
-- https://playwright.dev/docs/test-fixtures
-- https://playwright.dev/docs/auth
+- [Fixtures](https://playwright.dev/docs/test-fixtures) — официальное описание встроенных и custom fixtures, `test.extend` и `use`.
+- [Authentication](https://playwright.dev/docs/auth) — официальное руководство по подготовке и переиспользованию состояния авторизации.
+- [Page Object Models](https://playwright.dev/docs/pom) — пример организации Page Objects, которые можно предоставлять через fixtures.
+- [Test configuration](https://playwright.dev/docs/test-configuration) — основные параметры `playwright.config.ts`, включая общие настройки проектов.
+- [Projects](https://playwright.dev/docs/test-projects) — официальное описание проектов Playwright и зависимостей между ними.
 
-## Дополнительные материалы
+## TypeScript
 
-- TODO: добавить проверенные дополнительные материалы.
-
-## Видео
-
-- TODO: добавить короткие видео после ревью.
-
-## Инструменты
-
-- TODO: указать инструменты, которые нужны для практики модуля.
+- [Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html) — типы, union types и структуры данных, полезные для описания пользователей и ролей.
+- [Modules](https://www.typescriptlang.org/docs/handbook/2/modules.html) — экспорт и импорт типов, test data и вспомогательных объектов между файлами.

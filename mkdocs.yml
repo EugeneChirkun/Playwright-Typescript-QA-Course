@@ -66,3 +66,8 @@ nav:
         - 'Домашнее задание': 'modules/10-fixtures-test-data-auth/homework.md'
         - 'Чеклист': 'modules/10-fixtures-test-data-auth/checklist.md'
         - 'Ресурсы': 'modules/10-fixtures-test-data-auth/resources.md'
+    - '11. API testing':
+        - 'Обзор': 'modules/11-api-testing/index.md'
+        - 'Домашнее задание': 'modules/11-api-testing/homework.md'
+        - 'Чеклист': 'modules/11-api-testing/checklist.md'
+        - 'Ресурсы': 'modules/11-api-testing/resources.md'

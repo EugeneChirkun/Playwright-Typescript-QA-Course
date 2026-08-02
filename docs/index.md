@@ -32,12 +32,12 @@
 - [Модуль 08: Локаторы, проверки и auto-waiting](modules/08-locators-assertions/index.md)
 - [Модуль 09: Page Object Model и clean code](modules/09-page-object-model/index.md)
 - [Модуль 10: Fixtures, test data и auth](modules/10-fixtures-test-data-auth/index.md)
+- [Модуль 11: API testing в Playwright](modules/11-api-testing/index.md)
 
 ## Следующие модули
 
 Следующие модули находятся в подготовке и будут открываться постепенно:
 
-- Модуль 11: API testing
 - Модуль 12: CI и финальный проект
 
 ## Как пользоваться курсом

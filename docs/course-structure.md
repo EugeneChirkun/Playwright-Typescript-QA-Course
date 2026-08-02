@@ -12,5 +12,5 @@
 | [Модуль 08](modules/08-locators-assertions/index.md) | Локаторы, проверки и auto-waiting | Стабильные действия и проверки UI | Студент выбирает надежные локаторы, пишет полезные проверки и использует auto-waiting. |
 | [Модуль 09](modules/09-page-object-model/index.md) | Page Object Model и clean code | Структура и читаемость UI-тестов | Студент выносит локаторы и действия в поддерживаемые Page Objects. |
 | [Модуль 10](modules/10-fixtures-test-data-auth/index.md) | Fixtures, test data и auth | Переиспользование настройки, данных и состояния авторизации | Студент создает custom fixtures, организует типизированные test data и понимает `storageState`. |
-| Модуль 11 | API testing with Playwright | API checks внутри Playwright | Студент пишет базовые API тесты. |
+| [Модуль 11](modules/11-api-testing/index.md) | API testing в Playwright | Проверка API и поддержка UI-тестов | Студент пишет базовые API-тесты и проверяет status code, headers и response body. |
 | Модуль 12 | CI и финальный проект | GitHub Actions и финальный проект | Студент собирает итоговый mini-project и понимает CI. |

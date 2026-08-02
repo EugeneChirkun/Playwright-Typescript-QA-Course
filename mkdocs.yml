@@ -61,3 +61,8 @@ nav:
         - 'Домашнее задание': 'modules/09-page-object-model/homework.md'
         - 'Чеклист': 'modules/09-page-object-model/checklist.md'
         - 'Ресурсы': 'modules/09-page-object-model/resources.md'
+    - '10. Fixtures, test data и auth':
+        - 'Обзор': 'modules/10-fixtures-test-data-auth/index.md'
+        - 'Домашнее задание': 'modules/10-fixtures-test-data-auth/homework.md'
+        - 'Чеклист': 'modules/10-fixtures-test-data-auth/checklist.md'
+        - 'Ресурсы': 'modules/10-fixtures-test-data-auth/resources.md'

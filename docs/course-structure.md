@@ -13,4 +13,6 @@
 | [Модуль 09](modules/09-page-object-model/index.md) | Page Object Model и clean code | Структура и читаемость UI-тестов | Студент выносит локаторы и действия в поддерживаемые Page Objects. |
 | [Модуль 10](modules/10-fixtures-test-data-auth/index.md) | Fixtures, test data и auth | Переиспользование настройки, данных и состояния авторизации | Студент создает custom fixtures, организует типизированные test data и понимает `storageState`. |
 | [Модуль 11](modules/11-api-testing/index.md) | API testing в Playwright | Проверка API и поддержка UI-тестов | Студент пишет базовые API-тесты и проверяет status code, headers и response body. |
-| Модуль 12 | CI и финальный проект | GitHub Actions и финальный проект | Студент собирает итоговый mini-project и понимает CI. |
+| [Модуль 12](modules/12-ci-final-project/index.md) | CI и финальный проект | GitHub Actions и итоговая работа | Студент подключает проверки к CI, собирает финальный проект и готовит его к ревью. |
+
+После модуля 12 обязательная программа курса завершена. Итогом становятся работающий CI, финальный PR и результаты ревью.

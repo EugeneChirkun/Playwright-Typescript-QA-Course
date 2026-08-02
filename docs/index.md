@@ -33,12 +33,9 @@
 - [Модуль 09: Page Object Model и clean code](modules/09-page-object-model/index.md)
 - [Модуль 10: Fixtures, test data и auth](modules/10-fixtures-test-data-auth/index.md)
 - [Модуль 11: API testing в Playwright](modules/11-api-testing/index.md)
+- [Модуль 12: CI и финальный проект](modules/12-ci-final-project/index.md)
 
-## Следующие модули
-
-Следующие модули находятся в подготовке и будут открываться постепенно:
-
-- Модуль 12: CI и финальный проект
+Все 12 обязательных модулей доступны. Курс завершается подключением CI, подготовкой финального проекта, итоговым PR и ревью.
 
 ## Как пользоваться курсом
 

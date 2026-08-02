@@ -71,3 +71,8 @@ nav:
         - 'Домашнее задание': 'modules/11-api-testing/homework.md'
         - 'Чеклист': 'modules/11-api-testing/checklist.md'
         - 'Ресурсы': 'modules/11-api-testing/resources.md'
+    - '12. CI и финальный проект':
+        - 'Обзор': 'modules/12-ci-final-project/index.md'
+        - 'Домашнее задание': 'modules/12-ci-final-project/homework.md'
+        - 'Чеклист': 'modules/12-ci-final-project/checklist.md'
+        - 'Ресурсы': 'modules/12-ci-final-project/resources.md'

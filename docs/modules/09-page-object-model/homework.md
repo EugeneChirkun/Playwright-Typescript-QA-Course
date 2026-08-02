@@ -1,19 +1,25 @@
 # Домашнее задание: Модуль 09
 
-## Цель домашнего задания
+## Цель
 
-Цель — переработать простые тесты Playwright с помощью Page Object Model.
+Создать простой Page Object для формы входа и использовать его в тесте Playwright. Работу выполняйте в отдельном репозитории с домашними заданиями, ссылка на который приведена в [ресурсах модуля](resources.md).
 
-Вам нужно:
+Не создавайте новый проект Playwright. Используйте проект, подготовленный в предыдущих модулях.
 
-- перед началом обновить ветку модуля 09 из личной master-ветки;
-- создать Page Object classes в `src/pages/`;
-- создать тесты Playwright в `tests/module-09-page-object-model/`;
-- заполнить `homework/module-09-page-object-model/result.md`;
-- запустить тесты из терминала;
-- открыть PR в личную master-ветку.
+## Ожидаемая структура
 
-## Задание 1. Подготовить ветку модуля 09
+```text
+src/pages/login.page.ts
+src/pages/home.page.ts
+tests/module-09/login-pom.spec.ts
+homework/module-09-page-object-model/result.md
+```
+
+Файл `home.page.ts` относится к необязательной части. Сохраните принятую в репозитории структуру, если она немного отличается от примера.
+
+## Задание 1. Подготовить ветку
+
+Получите актуальные изменения из личной master-ветки и добавьте их в ветку модуля:
 
 ```bash
 git fetch origin
@@ -26,175 +32,122 @@ git merge origin/student/{student-name-slug}/master
 git push
 ```
 
-## Задание 2. Подготовить проект локально
-
-Установите зависимости:
+Если ветка модуля еще не создана, создайте ее от обновленной личной master-ветки:
 
 ```bash
-npm install
+git switch -c student/{student-name-slug}/module-09-page-object-model
+git push -u origin student/{student-name-slug}/module-09-page-object-model
 ```
 
-Если браузеры еще не установлены, выполните:
+## Задание 2. Создать `LoginPage`
+
+Создайте `src/pages/login.page.ts`. В классе `LoginPage`:
+
+- примите `Page` в конструкторе;
+- перенесите в класс локаторы поля электронной почты, поля пароля и кнопки входа;
+- используйте понятные названия полей и методов;
+- добавьте возвращаемый тип `Promise<void>` для асинхронных методов.
+
+Не копируйте пример механически: подберите локаторы для страницы, которая уже используется в вашем проекте.
+
+## Задание 3. Добавить методы действий
+
+Реализуйте методы:
+
+- `open()`;
+- `fillEmail(email: string)`;
+- `fillPassword(password: string)`;
+- `clickLogin()`;
+- `login(email: string, password: string)`.
+
+Метод `login()` должен объединять заполнение формы и нажатие кнопки, используя локаторы или более узкие методы класса.
+
+Добавьте один простой метод проверки, если он уместен для выбранной страницы. Например, можно проверить видимость кнопки входа. Назовите метод так, чтобы проверка была очевидна, например `expectLoginButtonVisible()`.
+
+## Задание 4. Создать тест с Page Object
+
+Создайте `tests/module-09/login-pom.spec.ts` и напишите не менее одного теста, который:
+
+1. получает `page` от Playwright;
+2. создает `LoginPage`;
+3. открывает страницу входа;
+4. выполняет действия через методы `LoginPage`;
+5. содержит понятное название и не дублирует локаторы из Page Object.
+
+Сохраните в тесте важную проверку результата, если ее можно выполнить с доступными данными. Тест должен читаться как сценарий, а не как набор технических команд.
+
+## Задание 5. Необязательно создать `HomePage`
+
+Если после входа доступна домашняя страница, создайте `src/pages/home.page.ts`. Добавьте только относящиеся к ней локаторы и действия. Не переносите в `HomePage` детали формы входа и не создавайте общий класс для всего приложения.
+
+## Задание 6. Проверить результат
+
+Запустите проверку типов и тесты командами, предусмотренными в репозитории:
 
 ```bash
-npx playwright install
-```
-
-## Задание 3. Создать файлы
-
-Создайте Page Object classes:
-
-```text
-src/pages/TodoPage.ts
-src/pages/PlaywrightHomePage.ts
-```
-
-Создайте тестовые файлы:
-
-```text
-tests/module-09-page-object-model/todo-page-object.spec.ts
-tests/module-09-page-object-model/playwright-home-page-object.spec.ts
-```
-
-Создайте файл с результатом:
-
-```text
-homework/module-09-page-object-model/result.md
-```
-
-## Задание 4. Создать `TodoPage`
-
-В `src/pages/TodoPage.ts` создайте class `TodoPage`.
-
-Требования:
-
-- импортируйте `Page`, `Locator` и `expect` из `@playwright/test`;
-- передайте `private page: Page` через constructor;
-- создайте locator поля для новой задачи;
-- создайте method `open(): Promise<void>`;
-- создайте method `addTodo(title: string): Promise<void>`;
-- создайте method `expectTodoVisible(title: string): Promise<void>`;
-- по возможности создайте method `expectTodoCount(count: number): Promise<void>`.
-
-Рекомендуемая страница:
-
-```text
-https://demo.playwright.dev/todomvc/
-```
-
-## Задание 5. Создать тест для `TodoPage`
-
-В `tests/module-09-page-object-model/todo-page-object.spec.ts` создайте тесты, которые:
-
-- создают `const todoPage = new TodoPage(page)`;
-- открывают страницу TodoMVC;
-- добавляют одну задачу и проверяют, что она видима;
-- добавляют две задачи и проверяют, что обе видимы.
-
-Тест должен легко читаться. Не дублируйте в нем locators из Page Object.
-
-## Задание 6. Создать `PlaywrightHomePage`
-
-В `src/pages/PlaywrightHomePage.ts` создайте class `PlaywrightHomePage`.
-
-Требования:
-
-- передайте `private page: Page` через constructor;
-- создайте method `open(): Promise<void>`;
-- создайте method `clickGetStarted(): Promise<void>`;
-- создайте method `expectHomePageOpened(): Promise<void>`;
-- создайте method `expectInstallationPageOpened(): Promise<void>`.
-
-Используйте страницу:
-
-```text
-https://playwright.dev/
-```
-
-## Задание 7. Создать тест для `PlaywrightHomePage`
-
-В `tests/module-09-page-object-model/playwright-home-page-object.spec.ts` создайте тест, который:
-
-- открывает главную страницу Playwright через Page Object;
-- проверяет главную страницу;
-- нажимает `Get started`;
-- проверяет, что открылась страница Installation.
-
-Используйте methods Page Object и не дублируйте его locators в тесте.
-
-## Задание 8. Проверить чистоту кода
-
-Перед запуском тестов убедитесь, что:
-
-- названия methods понятны;
-- Page Object не скрывает весь сценарий в одном method;
-- нет названий `doEverything` и `click1`;
-- locators не дублируются в тестах;
-- нет огромного class для несвязанных страниц;
-- сформированные отчеты не подготовлены к commit.
-
-## Задание 9. Запустить тесты
-
-```bash
+npm run typecheck
 npm run test
 ```
 
-При необходимости откройте отчет:
+Если тест нельзя запустить из-за недоступного демонстрационного сайта или отсутствующих учетных данных:
 
-```bash
-npm run report
-```
+- добейтесь успешного выполнения `npm run typecheck`;
+- не добавляйте вымышленные рабочие учетные данные;
+- опишите ограничение и результат проверки типов в `result.md`.
 
-## Задание 10. Заполнить `result.md`
+## Задание 7. Заполнить `result.md`
 
 В `homework/module-09-page-object-model/result.md` укажите:
 
-- название текущей ветки;
-- созданные файлы;
-- использованные команды;
-- прошла ли команда `npm run test`;
-- краткое объяснение Page Object Model;
-- почему locators были перенесены в Page Object;
-- как работает constructor с `Page`;
-- что такое methods действий и methods с assertions;
-- что стало проще после переработки;
-- что оказалось сложнее;
-- оставшиеся вопросы или проблемы.
+- какие Page Objects созданы;
+- какие локаторы и действия перенесены из теста;
+- какой сценарий использует `LoginPage`;
+- какие команды проверки запускались и каков результат;
+- какие ограничения остались;
+- ссылку на PR.
 
-## Задание 11. Сделать commit, push и PR
+Не добавляйте в Git пароли, токены, файлы с секретами, `node_modules`, отчеты и результаты тестовых запусков.
 
-Перед commit еще раз убедитесь, что тесты проходят:
+## Задание 8. Подготовить commit и PR
 
-```bash
-npm run test
-```
-
-Затем выполните:
+Проверьте изменения, создайте commit и отправьте ветку:
 
 ```bash
 git status
-git add .
-git commit -m "Complete module 09 page object model homework"
+git add src/pages tests/module-09 homework/module-09-page-object-model/result.md
+git commit -m "Add module 09 page objects"
 git push
 ```
 
-Направление PR:
+Откройте pull request (PR) со следующими ветками:
 
 ```text
 base: student/{student-name-slug}/master
 compare: student/{student-name-slug}/module-09-page-object-model
 ```
 
+В описании PR кратко перечислите Page Objects, тестовые сценарии и результаты команд проверки.
+
 ## Ожидаемый результат
 
-- Ветка модуля 09 обновлена из личной master-ветки до начала работы.
-- Page Object classes созданы в `src/pages/`.
-- Тесты Playwright созданы в `tests/module-09-page-object-model/`.
-- Файл `result.md` заполнен.
-- Команда `npm run test` проходит успешно.
-- Сформированные отчеты не добавлены в Git.
-- В тестах нет дублирования locators.
-- Изменения сохранены в commit и отправлены в удаленный репозиторий.
-- PR открыт в личную master-ветку.
-- `node_modules` не добавлен в Git.
-- В коде и документации нет настоящих имен учащихся.
+- Создан как минимум один простой Page Object.
+- `Page` передается в конструктор.
+- Локаторы формы входа находятся в `LoginPage`.
+- Методы действий имеют понятные названия и типы.
+- Как минимум один тест использует `LoginPage` и не дублирует его локаторы.
+- Заполнен `result.md`.
+- Выполнена проверка типов; тесты запущены либо ограничение описано.
+- PR открыт из ветки модуля в личную master-ветку.
+
+## Чеклист перед отправкой
+
+- [ ] Работа выполнена в репозитории с домашними заданиями.
+- [ ] Ветка модуля обновлена из личной master-ветки.
+- [ ] Создан `LoginPage` с конструктором, локаторами и методами.
+- [ ] Тест читаем и использует Page Object.
+- [ ] Page Object не содержит несвязанные страницы и весь тестовый сценарий.
+- [ ] `npm run typecheck` выполнена успешно.
+- [ ] `npm run test` выполнена либо ограничение описано в `result.md`.
+- [ ] В репозитории нет секретов и сгенерированных файлов.
+- [ ] `result.md` заполнен.
+- [ ] PR направлен в личную master-ветку.

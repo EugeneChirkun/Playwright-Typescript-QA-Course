@@ -1,356 +1,288 @@
-# Модуль 09: Page Object Model и clean code
+# Модуль 09: Page Object Model
 
 ## Цель модуля
 
-Цель модуля — научиться организовывать UI-тесты Playwright так, чтобы тестовые файлы оставались читаемыми, а детали конкретных страниц находились в отдельных classes.
-
-После модуля вы сможете:
-
-- объяснить, что такое Page Object Model и зачем он нужен;
-- создать простой Page Object class;
-- передать Playwright `page` в class через constructor;
-- хранить locators внутри Page Object;
-- создавать methods для действий пользователя;
-- использовать Page Object в тесте;
-- не усложнять Page Objects без необходимости;
-- сохранять тесты читаемыми;
-- отделять сценарий теста от деталей реализации страницы.
+Научиться отделять сценарий теста от технических деталей взаимодействия со страницей. После модуля вы сможете создать простой Page Object, перенести в него локаторы и действия и написать читаемый тест Playwright.
 
 ## Что уже нужно знать
 
-Перед началом пригодятся основы TypeScript, `async`/`await`, classes и constructors из модулей 03–06. Также нужно понимать Playwright `test`, `expect` и `page`, locators, assertions из модулей 07–08 и базовый порядок работы с Git.
+Модуль опирается на материал предыдущих занятий:
 
-## Почему Page Object Model нужен
+- основы JavaScript и TypeScript из модулей 03–04;
+- `Promise`, `async` и `await` из модуля 05;
+- классы, конструкторы, поля и методы из модуля 06;
+- объекты `test`, `page` и `expect` из модуля 07;
+- локаторы и проверки из модуля 08.
 
-Без Page Object Model тесты часто становятся сложными в сопровождении: каждый из них содержит адреса страниц, locators, клики, заполнение полей, assertions и повторяющиеся шаги.
+## Почему Page Object Model важен
 
-Page Object Model помогает:
+В UI-тестах часто повторяются одни и те же локаторы и действия. Если разметка изменится, одинаковый локатор придется исправлять во многих файлах. Чем больше набор тестов, тем дороже такое сопровождение.
 
-- уменьшить дублирование;
-- сохранить тесты читаемыми;
-- держать locators в одном месте;
-- проще вносить изменения при обновлении интерфейса;
-- отделить намерение теста от деталей страницы.
+Page Object Model (POM) помогает:
 
-## Темы модуля
+- хранить детали страницы в одном месте;
+- не дублировать локаторы;
+- давать действиям понятные названия;
+- оставлять в тесте последовательность шагов сценария;
+- менять локатор в одном классе, а не во всех тестах.
 
-- проблема дублирования кода UI-тестов;
-- назначение Page Object Model;
-- Page Object class;
-- constructor с `Page`;
-- свойства с locators;
-- methods действий и assertions;
-- читаемость теста и выбор названий;
-- содержимое Page Object и его границы;
-- типичные ошибки;
-- базовая структура папок.
+POM не делает тест автоматически качественным. Это способ организовать код, который требует понятных границ и названий.
 
-## 1. Проблема: тесты становятся слишком подробными
+## Что такое Page Object
+
+Page Object — класс, представляющий страницу или самостоятельную область интерфейса. Обычно он содержит:
+
+- объект Playwright `Page`;
+- локаторы элементов этой страницы;
+- методы для действий пользователя;
+- иногда — небольшие проверки состояния страницы.
+
+Тест отвечает на вопрос **«что проверяем?»**, а Page Object — **«как взаимодействуем со страницей?»**.
+
+## Проблема тестов без Page Object Model
+
+Представим несколько тестов формы входа. Каждый тест самостоятельно находит поля и кнопку:
 
 ```ts
 import { expect, test } from '@playwright/test';
 
-test('user can add todo item', async ({ page }) => {
-  await page.goto('https://demo.playwright.dev/todomvc/');
+test('user can log in with valid credentials', async ({ page }) => {
+  await page.goto('/login');
+  await page.getByLabel('Email').fill('qa.user@example.com');
+  await page.getByLabel('Password').fill('Password123!');
+  await page.getByRole('button', { name: 'Login' }).click();
 
-  await page.getByPlaceholder('What needs to be done?').fill('Buy milk');
-  await page.getByPlaceholder('What needs to be done?').press('Enter');
-
-  await expect(page.getByText('Buy milk')).toBeVisible();
+  await expect(page).toHaveURL('/home');
 });
 ```
 
-Для первых тестов такой вариант приемлем. Но если множество тестов используют одну страницу и одни locators, возникает дублирование. После изменения интерфейса приходится исправлять сразу много тестовых файлов.
+Сам по себе этот тест понятен. Проблема появится, когда те же три локатора будут скопированы в десятки сценариев. Например, после изменения подписи `Email` придется искать и исправлять все копии.
 
-## 2. Что такое Page Object Model
+## Простая структура теста без POM
 
-Page Object Model — подход, при котором каждая важная страница или область страницы представлена отдельным class. В нем обычно находятся locators, действия со страницей и иногда относящиеся к ней assertions.
+В тесте без POM смешаны три уровня:
 
-Тест описывает сценарий, а Page Object — способ взаимодействия со страницей.
+1. подготовка и тестовые данные;
+2. детали взаимодействия с интерфейсом;
+3. проверяемый сценарий.
 
-## 3. Простой Page Object class
+Для одного короткого теста это допустимо. Если страница используется повторно, ее локаторы и типичные действия полезно вынести в отдельный класс.
 
-Создадим `TodoPage`:
+Не нужно создавать Page Object ради единственной строки. Выносите код, когда это улучшает читаемость или устраняет повторение.
+
+## Как выглядит Page Object
 
 ```ts
 import { expect, Page } from '@playwright/test';
 
-export class TodoPage {
+export class LoginPage {
   constructor(private page: Page) {}
 
+  private emailInput = this.page.getByLabel('Email');
+  private passwordInput = this.page.getByLabel('Password');
+  private loginButton = this.page.getByRole('button', { name: 'Login' });
+
   async open(): Promise<void> {
-    await this.page.goto('https://demo.playwright.dev/todomvc/');
+    await this.page.goto('/login');
   }
 
-  async addTodo(title: string): Promise<void> {
-    await this.page.getByPlaceholder('What needs to be done?').fill(title);
-    await this.page.getByPlaceholder('What needs to be done?').press('Enter');
+  async login(email: string, password: string): Promise<void> {
+    await this.emailInput.fill(email);
+    await this.passwordInput.fill(password);
+    await this.loginButton.click();
   }
 
-  async expectTodoVisible(title: string): Promise<void> {
-    await expect(this.page.getByText(title)).toBeVisible();
+  async expectLoginButtonVisible(): Promise<void> {
+    await expect(this.loginButton).toBeVisible();
   }
 }
 ```
 
-`TodoPage` представляет страницу TodoMVC. Constructor получает Playwright `page`, а methods описывают действия на странице. Благодаря этому тест становится короче.
+Класс экспортируется, чтобы тест мог его импортировать. Поля закрыты модификатором `private`: тесту не нужно знать, как именно Page Object находит элементы.
 
-## 4. Использование Page Object в тесте
+## Constructor и объект `Page`
+
+```ts
+constructor(private page: Page) {}
+```
+
+Конструктор получает созданный Playwright объект `Page`. Сокращенная запись TypeScript одновременно объявляет закрытое поле `page` и сохраняет в нем переданное значение. Поэтому методы класса могут вызывать `this.page.goto()` и создавать локаторы.
+
+Page Object не должен самостоятельно открывать браузер или создавать новую страницу. Тест получает `page` от Playwright и передает его в класс.
+
+## Locators внутри Page Object
+
+Локаторы можно хранить в полях:
+
+```ts
+private emailInput = this.page.getByLabel('Email');
+```
+
+Для локатора, зависящего от аргумента, удобен закрытый метод:
+
+```ts
+private productByName(name: string) {
+  return this.page.getByRole('link', { name });
+}
+```
+
+Другой допустимый вариант — геттер:
+
+```ts
+private get loginButton() {
+  return this.page.getByRole('button', { name: 'Login' });
+}
+```
+
+Выберите понятный для команды вариант и используйте его последовательно. Не переносите локаторы обратно в тест только ради одной проверки: сначала подумайте, какой открытый метод или результат действительно нужен сценарию.
+
+## Methods для действий пользователя
+
+Метод действия описывает намерение пользователя, а не отдельную низкоуровневую команду:
+
+```ts
+async fillEmail(email: string): Promise<void> {
+  await this.emailInput.fill(email);
+}
+
+async clickLogin(): Promise<void> {
+  await this.loginButton.click();
+}
+```
+
+Связанные шаги можно объединить в осмысленное действие:
+
+```ts
+async login(email: string, password: string): Promise<void> {
+  await this.emailInput.fill(email);
+  await this.passwordInput.fill(password);
+  await this.loginButton.click();
+}
+```
+
+Названия `login()`, `open()` и `selectProduct()` объясняют цель. Названия `doEverything()`, `click1()` и `performAction()` скрывают смысл.
+
+Методы Playwright асинхронны, поэтому методы Page Object также объявляются с `async`, возвращают `Promise<void>` и ожидают действия с помощью `await`.
+
+## Methods для проверок: когда можно, а когда лучше оставить в тесте
+
+Небольшая проверка, тесно связанная со страницей, может находиться в Page Object:
+
+```ts
+async expectLoginButtonVisible(): Promise<void> {
+  await expect(this.loginButton).toBeVisible();
+}
+```
+
+Это удобно для повторяющегося признака готовности страницы или состояния конкретного элемента. Метод должен явно называться `expect...`, чтобы читатель видел проверку.
+
+Проверку бизнес-результата часто лучше оставить в тесте:
+
+```ts
+await expect(page).toHaveURL('/home');
+```
+
+Так главное ожидание сценария остается заметным. Не существует правила, по которому все проверки обязательно должны находиться только в тестах или только в Page Objects. Важно не скрывать смысл сценария и соблюдать единый подход в проекте.
+
+## Как должен выглядеть тест с Page Object
 
 ```ts
 import { test } from '@playwright/test';
-import { TodoPage } from '../../src/pages/TodoPage';
+import { LoginPage } from '../src/pages/login.page';
 
-test('user can add todo item', async ({ page }) => {
-  const todoPage = new TodoPage(page);
+test('user can log in with valid credentials', async ({ page }) => {
+  const loginPage = new LoginPage(page);
 
-  await todoPage.open();
-  await todoPage.addTodo('Buy milk');
-  await todoPage.expectTodoVisible('Buy milk');
+  await loginPage.open();
+  await loginPage.login('qa.user@example.com', 'Password123!');
 });
 ```
 
-Такой тест проще читать: locators скрыты внутри `TodoPage`, а названия methods показывают шаги сценария.
+Здесь тест описывает сценарий, а `LoginPage` содержит детали взаимодействия со страницей. Локаторы не дублируются. Если интерфейс изменится, соответствующий локатор нужно будет исправить только в классе страницы.
 
-## 5. Constructor и объект `Page`
+Тест не обязан быть самым коротким. Он должен быть читаемым: подготовка, действия и важные проверки должны оставаться видимыми.
 
-Page Object нужен Playwright `Page`, чтобы взаимодействовать со страницей браузера:
+## Где хранить Page Objects в проекте
 
-```ts
-import { Page } from '@playwright/test';
-
-export class PlaywrightHomePage {
-  constructor(private page: Page) {}
-}
-```
-
-Запись `private page: Page` сохраняет объект страницы внутри class. Затем methods обращаются к нему через `this.page`. Так знания ООП из модуля 06 применяются вместе с Playwright.
-
-## 6. Свойства с locators
-
-Locators можно хранить в свойствах class или возвращать из methods.
-
-```ts
-import { Locator, Page } from '@playwright/test';
-
-export class PlaywrightHomePage {
-  readonly getStartedLink: Locator;
-
-  constructor(private page: Page) {
-    this.getStartedLink = page.getByRole('link', { name: 'Get started' });
-  }
-
-  async open(): Promise<void> {
-    await this.page.goto('https://playwright.dev/');
-  }
-
-  async clickGetStarted(): Promise<void> {
-    await this.getStartedLink.click();
-  }
-}
-```
-
-Тип `Locator` импортируется из Playwright. Модификатор `readonly` полезен, потому что свойство с locator не должно получать новое значение. Название method должно описывать действие пользователя.
-
-Необязательная альтернатива — закрытое вычисляемое свойство:
-
-```ts
-private get todoInput(): Locator {
-  return this.page.getByPlaceholder('What needs to be done?');
-}
-```
-
-На начальном этапе выберите один понятный вариант и применяйте его последовательно.
-
-## 7. Methods действий
-
-Methods действий выполняют шаги пользователя: открывают страницу, нажимают ссылку, заполняют поле, отправляют форму или добавляют задачу.
-
-Понятные названия: `open()`, `addTodo(title: string)`, `clickGetStarted()`, `searchFor(text: string)`. Названия `clickButton1()`, `doStuff()`, `testAction()` и просто `click()` не объясняют цель действия.
-
-## 8. Methods с assertions
-
-Распространены два подхода:
-
-1. Оставлять assertions в тестовых файлах.
-2. Помещать относящиеся к странице assertions в methods Page Object.
-
-Оба подхода допустимы, если команда следует выбранному правилу последовательно.
-
-Assertion внутри Page Object:
-
-```ts
-async expectTodoVisible(title: string): Promise<void> {
-  await expect(this.page.getByText(title)).toBeVisible();
-}
-```
-
-Assertion в тестовом файле:
-
-```ts
-await expect(page.getByText('Buy milk')).toBeVisible();
-```
-
-В учебном проекте page-specific methods с assertions допустимы. При этом важные бизнес-проверки не следует прятать слишком глубоко: смысл теста должен оставаться понятным.
-
-## 9. Чистый тест и скрытая логика
-
-Page Object должен делать тест яснее, а не загадочнее.
-
-Хороший пример:
-
-```ts
-test('user can add todo item', async ({ page }) => {
-  const todoPage = new TodoPage(page);
-
-  await todoPage.open();
-  await todoPage.addTodo('Buy milk');
-  await todoPage.expectTodoVisible('Buy milk');
-});
-```
-
-Плохой пример:
-
-```ts
-test('todo test', async ({ page }) => {
-  const todoPage = new TodoPage(page);
-
-  await todoPage.doEverything();
-});
-```
-
-`doEverything` скрывает весь сценарий. Хорошие названия methods позволяют прочитать последовательность действий без изучения реализации Page Object.
-
-## 10. Структура папок
-
-Для репозитория с домашними заданиями достаточно простой структуры:
+Для учебного проекта достаточно простой структуры:
 
 ```text
 src/
   pages/
-    TodoPage.ts
-    PlaywrightHomePage.ts
-
+    login.page.ts
+    home.page.ts
 tests/
-  module-09-page-object-model/
-    todo-page-object.spec.ts
-    playwright-home-page-object.spec.ts
+  module-09/
+    login-pom.spec.ts
 ```
 
-В `src/pages/` находятся Page Object classes, а в `tests/` — тесты, которые их импортируют.
+Page Objects находятся отдельно от тестов, но это не отдельное приложение или новый проект. В домашнем задании вы добавите их в уже подготовленный репозиторий с заданиями.
 
-## 11. Что должно находиться внутри Page Object
+## Один Page Object — одна зона ответственности
 
-Подходящее содержимое:
+`LoginPage` должен описывать форму входа, а `HomePage` — домашнюю страницу. Не стоит помещать каталог, корзину, профиль и административную панель в один `ApplicationPage`.
 
-- адрес страницы;
-- locators;
-- действия, относящиеся к странице;
-- assertions, относящиеся к странице;
-- небольшие вспомогательные methods для этой страницы.
+Если класс стал слишком большим, проверьте:
 
-Не следует помещать туда:
+- не объединяет ли он несколько разных страниц;
+- нет ли в нем несвязанных тестовых данных;
+- не описывает ли он весь бизнес-сценарий вместо одной области интерфейса;
+- можно ли выделить самостоятельный компонент, например меню или модальное окно.
 
-- логику test runner;
-- несвязанные тестовые данные;
-- API clients;
-- бизнес-решения, относящиеся к сценарию теста;
-- огромный «god class» для всего приложения;
-- methods, которые скрывают весь тестовый сценарий.
+Разделять класс заранее на множество мелких объектов тоже не нужно. Начинайте с простой структуры и меняйте ее при появлении понятной причины.
 
-## 12. Выбор названий
+## Типичные ошибки
 
-Название class должно описывать страницу или компонент, название method — действие пользователя или ожидаемое состояние, а имя locator — конкретный элемент.
-
-Хорошие примеры: `TodoPage`, `PlaywrightHomePage`, `open()`, `addTodo(title)`, `expectTodoVisible(title)`, `getStartedLink`.
-
-Избегайте названий `Page1`, `CommonPageForEverything`, `click1`, `doAction`, `check()`.
-
-## 13. Page Object и компоненты
-
-Повторяющиеся части интерфейса иногда представляют отдельными объектами-компонентами: шапку сайта, меню навигации, модальное окно, таблицу или боковую панель. Пока достаточно знать о такой возможности; сложную модель компонентов в этом модуле мы не реализуем.
-
-## 14. Типичные ошибки
-
-- помещать все страницы приложения в один огромный class;
-- создавать отдельный method для каждой мелкой команды Playwright без пользы;
-- скрывать весь тест в одном method;
-- использовать неясные названия;
-- смешивать несвязанные страницы в одном class;
-- без причины хранить тестовые данные внутри Page Object;
-- забывать `await`;
-- дублировать locators в тестах и Page Objects;
-- злоупотреблять наследованием;
-- создавать Page Object до того, как стало понятно поведение страницы.
+- один огромный Page Object для всего приложения;
+- копирование локаторов одновременно в класс и в тесты;
+- методы без понятного назначения: `doStuff()` или `clickButton()`;
+- один метод, который скрывает весь тестовый сценарий;
+- хранение несвязанных тестовых данных и бизнес-решений внутри Page Object;
+- создание отдельного метода для каждой команды без улучшения читаемости;
+- отсутствие `await` перед асинхронным действием;
+- создание нового `Page` внутри Page Object;
+- проверки со скрытым смыслом и названием `check()`;
+- сложное наследование и архитектура «на будущее».
 
 ## Что обязательно понять в этом модуле
 
-- что такое Page Object Model и почему он уменьшает дублирование;
-- как создать Page Object class и передать `page` через constructor;
-- как хранить locators и создавать methods действий;
-- как использовать Page Object в тестах;
-- как сохранить тесты читаемыми.
+- Page Object отделяет сценарий теста от деталей интерфейса.
+- Объект `Page` передается в конструктор.
+- Локаторы и повторяемые действия хранятся в классе страницы.
+- Методы называют по намерению пользователя.
+- Проверка в Page Object допустима, если она не скрывает смысл теста.
+- POM должен уменьшать дублирование, а не создавать лишнюю сложность.
 
-## Что пока достаточно узнать обзорно
-
-Пока достаточно общего представления об объектах-компонентах, Page Objects на основе fixtures и более сложной архитектуре. Fixtures и настройка авторизации будут рассмотрены в модуле 10; здесь мы их не реализуем.
+Fixtures, хранение состояния авторизации, API-тестирование, CI и сложная архитектура будут рассмотрены позже.
 
 ## Практика на занятии
 
-1. Откройте репозиторий с домашними заданиями в VS Code.
-2. Проверьте текущую ветку.
-3. Переключитесь на личную master-ветку и получите обновления.
-4. Переключитесь на ветку модуля 09.
-5. Перед началом работы добавьте в нее изменения из личной master-ветки.
-6. Создайте Page Object class для TodoMVC.
-7. Перенесите в него locators и действия.
-8. Создайте тест, использующий Page Object.
-9. Создайте Page Object class для главной страницы Playwright.
-10. Создайте использующий его тест.
-11. Запустите тесты.
-12. При необходимости откройте отчет.
-
-```bash
-git fetch origin
-
-git switch student/{student-name-slug}/master
-git pull origin student/{student-name-slug}/master
-
-git switch student/{student-name-slug}/module-09-page-object-model
-git merge origin/student/{student-name-slug}/master
-git push
-```
-
-```bash
-npm install
-npx playwright install
-npm run test
-npm run report
-```
-
-Команда `npx playwright install` нужна только в том случае, если браузеры еще не установлены локально.
+1. Откройте существующий проект в репозитории с домашними заданиями.
+2. Выберите короткий тест входа без POM.
+3. Создайте `src/pages/login.page.ts`.
+4. Передайте `Page` в конструктор `LoginPage`.
+5. Перенесите локаторы формы входа в класс.
+6. Добавьте методы `open()`, `fillEmail()`, `fillPassword()`, `clickLogin()` и `login()`.
+7. Перепишите тест с использованием `LoginPage`.
+8. Убедитесь, что тест читается как последовательность шагов сценария.
+9. Запустите проверку типов и тесты.
+10. Обсудите, какую проверку уместно оставить в тесте.
 
 ## Вопросы для проверки понимания
 
 1. Какую проблему решает Page Object Model?
-2. Что такое Page Object?
-3. Почему не стоит дублировать locators во многих тестах?
-4. Что обычно хранится в Page Object?
-5. Что не следует хранить в Page Object?
-6. Зачем Page Object получает `page` через constructor?
-7. Что означает `this.page`?
-8. Что такое method действия?
-9. Что такое method с assertion?
-10. Почему названия methods должны быть понятными?
-11. Почему `doEverything` — плохое название?
-12. Где следует хранить Page Object classes?
-13. Где следует хранить тесты?
-14. Когда assertion можно поместить в Page Object?
-15. Когда assertion лучше оставить в тесте?
-16. Что называют «god class»?
-17. Как Page Object Model готовит проект к росту набора автотестов?
-18. Как fixtures позднее помогут создавать и переиспользовать Page Objects?
+2. За что отвечает тест, а за что Page Object?
+3. Почему объект `Page` передают в конструктор?
+4. Где лучше хранить повторяющиеся локаторы?
+5. Чем метод `login()` полезнее набора локаторов в тесте?
+6. Когда проверку можно поместить в Page Object?
+7. Почему главное ожидание сценария полезно оставить в тесте?
+8. Почему `doEverything()` — плохой метод?
+9. По каким признакам Page Object стал слишком большим?
+10. Нужно ли создавать Page Object для каждой строки теста?
+11. Что придется изменить при обновлении локатора кнопки входа?
+12. Почему сложная архитектура «на будущее» мешает учебному проекту?
 
 ## Краткий итог
 
-Вы изучили основы Page Object Model, научились создавать Page Object classes и выносить из тестовых файлов locators и действия со страницей. Теперь вы можете писать более чистые тесты Playwright и готовы перейти в модуле 10 к fixtures, тестовым данным и настройке авторизации.
+Вы научились создавать Page Object, передавать в него `Page`, хранить локаторы и описывать действия пользователя методами. Хороший Page Object убирает повторение и технические детали, но сохраняет сценарий и ключевые проверки теста понятными.

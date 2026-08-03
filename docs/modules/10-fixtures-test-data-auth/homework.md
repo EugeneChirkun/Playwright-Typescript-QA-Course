@@ -2,6 +2,8 @@
 
 ## Цель домашнего задания
 
+Работа выполняется в [репозитории домашних заданий](https://github.com/EugeneChirkun/Pw-Ts-Qa-Hw), а не в репозитории документации курса.
+
 Цель — закрепить работу с fixtures, организацией test data и базовым auth setup в Playwright.
 
 Вам нужно обновить ветку модуля из личной ветки `master`, создать test data и custom fixture, подключить Page Object через fixture, подготовить пример auth setup, заполнить `homework/module-10-fixtures-test-data-auth/result.md`, выполнить доступные проверки и открыть PR в личную ветку `master`.

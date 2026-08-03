@@ -15,7 +15,7 @@
 - отправить изменения на GitHub через push;
 - открыть PR в личную master-ветку.
 
-`<student-name-slug>` означает имя и фамилию студента, записанные латинскими буквами в нижнем регистре и разделённые дефисами. В командах ниже используйте свой подготовленный slug.
+`{student-name-slug}` означает имя и фамилию студента, записанные латинскими буквами в нижнем регистре и разделённые дефисами. В командах ниже используйте свой подготовленный slug.
 
 ## Задание 1. Склонировать репозиторий для домашних заданий
 
@@ -32,23 +32,23 @@ git fetch origin
 Ветки студента уже подготовлены. Проверьте, что они видны локально как удалённые ветки:
 
 ```bash
-git branch -r | grep "student/<student-name-slug>"
+git branch -r | grep "student/{student-name-slug}"
 ```
 
 ## Задание 3. Переключиться на личную master-ветку и обновить её
 
 ```bash
-git switch student/<student-name-slug>/master
-git pull origin student/<student-name-slug>/master
+git switch student/{student-name-slug}/master
+git pull origin student/{student-name-slug}/master
 ```
 
-`student/<student-name-slug>/master` — личная основная ветка студента. В неё попадают проверенные и принятые домашние задания.
+`student/{student-name-slug}/master` — личная основная ветка студента. В неё попадают проверенные и принятые домашние задания.
 
 ## Задание 4. Переключиться на ветку Module 02 и обновить её от личной master-ветки
 
 ```bash
-git switch student/<student-name-slug>/module-02-git
-git merge origin/student/<student-name-slug>/master
+git switch student/{student-name-slug}/module-02-git
+git merge origin/student/{student-name-slug}/master
 git push
 ```
 
@@ -111,18 +111,18 @@ git push
 Откройте PR с таким направлением:
 
 ```text
-base: student/<student-name-slug>/master
-compare: student/<student-name-slug>/module-02-git
+base: student/{student-name-slug}/master
+compare: student/{student-name-slug}/module-02-git
 ```
 
-Не открывайте PR в ветку `master` репозитория. Домашние задания объединяются в личную основную ветку `student/<student-name-slug>/master`.
+Не открывайте PR в ветку `master` репозитория. Домашние задания объединяются в личную основную ветку `student/{student-name-slug}/master`.
 
 ## Задание 9. Если есть замечания после ревью
 
 Исправления после ревью выполняются в той же ветке Module 02. Новую ветку создавать не нужно.
 
 ```bash
-git switch student/<student-name-slug>/module-02-git
+git switch student/{student-name-slug}/module-02-git
 
 # edit files
 
@@ -139,12 +139,12 @@ git push
 К концу задания должно быть готово:
 
 - репозиторий для домашних заданий склонирован;
-- использована правильная ветка `student/<student-name-slug>/module-02-git`;
-- ветка модуля обновлена из `student/<student-name-slug>/master` до начала работы;
+- использована правильная ветка `student/{student-name-slug}/module-02-git`;
+- ветка модуля обновлена из `student/{student-name-slug}/master` до начала работы;
 - файл `homework/module-02-git/result.md` заполнен;
 - commit создан;
 - изменения отправлены на GitHub;
-- PR открыт в `student/<student-name-slug>/master`;
+- PR открыт в `student/{student-name-slug}/master`;
 - `node_modules` не добавлен в Git;
 - сгенерированные отчёты и артефакты не добавлены в Git.
 
@@ -163,3 +163,7 @@ git push
 Fork полезен в open-source или в ситуациях, когда у участника нет прав на запись в исходный репозиторий.
 
 В этом курсе fork — дополнительное понятие, а не основной способ выполнения домашних заданий. Основной процесс — работа в подготовленных ветках студента внутри репозитория для домашних заданий.
+
+## Проверка перед PR
+
+Перед отправкой решения выполните `npm run typecheck` и исправьте ошибки TypeScript.

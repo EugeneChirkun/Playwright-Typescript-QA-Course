@@ -2,6 +2,8 @@
 
 ## Цель домашнего задания
 
+Работа выполняется в [репозитории домашних заданий](https://github.com/EugeneChirkun/Pw-Ts-Qa-Hw), а не в репозитории документации курса.
+
 Цель — написать первые простые UI-тесты Playwright и запустить их локально в отдельном репозитории домашних заданий. Ссылка на него приведена на странице [ресурсов](resources.md).
 
 Вам нужно:
@@ -175,6 +177,7 @@ compare: student/{student-name-slug}/module-07-playwright-basics
 - [ ] Файлы с тестами созданы в `tests/module-07-playwright-basics/`.
 - [ ] Файл `result.md` заполнен.
 - [ ] `npm run test` завершается успешно.
+- [ ] `npm run typecheck` завершается без ошибок.
 - [ ] `node_modules`, `playwright-report` и `test-results` не добавлены в Git.
 - [ ] Изменения сохранены в commit и отправлены в удалённый репозиторий.
 - [ ] PR открыт в личную ветку `master`.

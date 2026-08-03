@@ -2,45 +2,53 @@
 
 ## Цель курса
 
-Помочь опытному Manual QA engineer перейти в Automation QA через практику с TypeScript и Playwright.
+Помочь опытному ручному тестировщику перейти к автоматизации тестирования с TypeScript и Playwright: от настройки окружения и работы с Git до UI- и API-тестов, CI и итогового проекта.
 
-## Целевая аудитория
+## Для кого этот курс
 
-Курс рассчитан на Manual QA engineers, которые уверенно понимают тест-дизайн, баг-репорты и QA-процессы, но только начинают писать автоматизированные тесты.
+Курс рассчитан на специалистов по ручному тестированию, которые знакомы с тест-дизайном, баг-репортами и командной работой, но только начинают писать автоматизированные тесты.
 
-## Ожидаемый результат
+## Что желательно знать до старта
 
-Через 3 месяца студент сможет самостоятельно создавать базовый Playwright project, писать UI и API тесты, использовать Page Object Model, работать с fixtures, test data, Git, branch, commit и pull request.
+- основы тестирования веб-приложений;
+- назначение тест-кейсов и баг-репортов;
+- базовые принципы работы браузера и клиент-серверного взаимодействия.
 
-## Формат обучения
+Опыт программирования не обязателен: необходимая база JavaScript и TypeScript входит в курс.
 
-- Короткая теория, достаточная для понимания и подготовки к собеседованию.
-- Практика после каждой важной темы.
-- Примеры кода и небольшие QA-сценарии.
-- Домашнее задание после каждого доступного модуля.
-- Ревью по чеклисту и pull request.
+## Срок прохождения
 
-## Доступные модули
+Ориентировочная продолжительность — 12 недель, по одному модулю в неделю. Темп можно менять: важнее выполнить практику и учесть замечания ревью, чем пройти материалы как можно быстрее.
 
-- [Модуль 01: Окружение, Node.js, npm, VS Code и Playwright](modules/01-environment-node-npm-vscode-playwright/index.md)
-- [Модуль 02: Git и ветки](modules/02-git-branches-main-commands/index.md)
-- [Модуль 03: JavaScript и TypeScript — основы](modules/03-typescript-introduction/index.md)
-- [Модуль 04: TypeScript для QA](modules/04-typescript-for-qa/index.md)
-- [Модуль 05: Async/await и Promise](modules/05-async-await-promises/index.md)
-- [Модуль 06: ООП — основы](modules/06-oop-basics/index.md)
-- [Модуль 07: Playwright — основы](modules/07-playwright-basics/index.md)
-- [Модуль 08: Локаторы, проверки и auto-waiting](modules/08-locators-assertions/index.md)
-- [Модуль 09: Page Object Model и clean code](modules/09-page-object-model/index.md)
-- [Модуль 10: Fixtures, test data и auth](modules/10-fixtures-test-data-auth/index.md)
-- [Модуль 11: API testing в Playwright](modules/11-api-testing/index.md)
-- [Модуль 12: CI и финальный проект](modules/12-ci-final-project/index.md)
+## Как устроено обучение
 
-Все 12 обязательных модулей доступны. Курс завершается подключением CI, подготовкой финального проекта, итоговым PR и ревью.
+Проходите модули по порядку. Сначала прочитайте обзор и разберите примеры, затем выполните практику и домашнее задание. Перед отправкой решения проверьте себя по чеклисту, а при необходимости обратитесь к официальной документации на странице ресурсов.
 
-## Как пользоваться курсом
+## Как выполняются домашние задания
 
-1. Проходите доступные модули по порядку.
-2. Читайте обзор модуля и выполняйте практику на занятии.
-3. Делайте домашнее задание в отдельной ветке.
-4. Проверяйте себя по чеклисту.
-5. Используйте ресурсы для официальной документации и дополнительных материалов.
+Практика выполняется не в репозитории документации, а в отдельном [репозитории домашних заданий](https://github.com/EugeneChirkun/Pw-Ts-Qa-Hw). Для каждого модуля студент обновляет рабочую ветку из личной ветки `student/{student-name-slug}/master`, выполняет проверки и открывает pull request (PR) обратно в личную ветку `master`.
+
+На ревью оценивается не только работоспособность решения, но и его понятность, структура и удобство дальнейшей поддержки. Замечания исправляются в той же ветке: открытый PR обновится автоматически.
+
+## Что студент получит в результате
+
+После курса студент сможет создавать и поддерживать проект Playwright, писать типизированные UI- и API-тесты, применять Page Object Model, fixtures и test data, анализировать отчёты и запускать проверки в GitHub Actions.
+
+## Модули курса
+
+1. [Окружение и Playwright](modules/01-environment-node-npm-vscode-playwright/index.md)
+2. [Git и ветки](modules/02-git-branches-main-commands/index.md)
+3. [JavaScript и TypeScript: основы](modules/03-typescript-introduction/index.md)
+4. [TypeScript для QA](modules/04-typescript-for-qa/index.md)
+5. [Async/await и Promise](modules/05-async-await-promises/index.md)
+6. [ООП: основы](modules/06-oop-basics/index.md)
+7. [Playwright: основы](modules/07-playwright-basics/index.md)
+8. [Локаторы и проверки](modules/08-locators-assertions/index.md)
+9. [Page Object Model](modules/09-page-object-model/index.md)
+10. [Fixtures, test data и auth](modules/10-fixtures-test-data-auth/index.md)
+11. [API testing](modules/11-api-testing/index.md)
+12. [CI и финальный проект](modules/12-ci-final-project/index.md)
+
+## Финальный результат
+
+После модуля 12 у студента будет итоговый набор UI- и API-тестов в репозитории домашних заданий, настроенные проверки CI, результаты локальных запусков и финальный PR, готовый к ревью.

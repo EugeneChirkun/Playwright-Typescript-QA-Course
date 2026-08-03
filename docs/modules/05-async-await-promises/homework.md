@@ -2,6 +2,8 @@
 
 ## Цель домашнего задания
 
+Работа выполняется в [репозитории домашних заданий](https://github.com/EugeneChirkun/Pw-Ts-Qa-Hw), а не в репозитории документации курса.
+
 Цель — закрепить async/await и Promise на небольших примерах TypeScript. Работа выполняется в отдельном репозитории домашних заданий, а не в репозитории документации курса.
 
 Перед началом нужно обновить ветку модуля 05 из личной ветки `master`. Затем необходимо создать TypeScript-файлы в `src/training/module-05-async-await-promises/`, заполнить `homework/module-05-async-await-promises/result.md`, запустить `npm run typecheck` и открыть PR в личную ветку `master`.

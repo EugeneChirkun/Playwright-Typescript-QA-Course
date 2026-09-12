@@ -15,20 +15,48 @@
 - открыть HTML report;
 - открыть PR в личную ветку `master`.
 
-## Задание 1. Подготовить ветку модуля 07
+## Перед началом работы
+
+Практическая работа выполняется в репозитории домашних заданий:
+
+`https://github.com/EugeneChirkun/Pw-Ts-Qa-Hw`
+
+Если это первое практическое задание, сначала склонируйте репозиторий:
 
 ```bash
-git fetch origin
+git clone https://github.com/EugeneChirkun/Pw-Ts-Qa-Hw.git
+cd Pw-Ts-Qa-Hw
+```
+
+Если репозиторий уже есть на компьютере, просто откройте его папку в VS Code и обновите ветки. Все команды выполняйте из корня проекта. Не создавайте новую пустую папку или новый проект для текущего модуля.
+
+После принятия предыдущего PR убедитесь, что ваша личная ветка `student/{student-name-slug}/master` обновлена. Затем обновите ветку текущего модуля из этой личной ветки `master`.
+
+При первом локальном переходе в подготовленные удалённые ветки выполните:
+
+```bash
+git fetch origin --prune
+
+git switch --track origin/student/{student-name-slug}/master
+git pull origin student/{student-name-slug}/master
+
+git switch --track origin/student/{student-name-slug}/module-07-playwright-basics
+git merge origin/student/{student-name-slug}/master
+```
+
+Если локальные ветки уже существуют, используйте более короткие команды:
+
+```bash
+git fetch origin --prune
 
 git switch student/{student-name-slug}/master
 git pull origin student/{student-name-slug}/master
 
 git switch student/{student-name-slug}/module-07-playwright-basics
 git merge origin/student/{student-name-slug}/master
-git push
 ```
 
-Сначала обновите личную ветку `master`, затем добавьте эти изменения в ветку модуля. Разрешите конфликты до начала основной работы.
+Если ветка модуля не найдена, не создавайте ветку со случайным названием. Обратитесь к преподавателю.
 
 ## Задание 2. Подготовить проект локально
 
@@ -171,8 +199,17 @@ base: student/{student-name-slug}/master
 compare: student/{student-name-slug}/module-07-playwright-basics
 ```
 
+Не открывайте PR в `master` репозитория. Домашние задания объединяются в личную основную ветку студента `student/{student-name-slug}/master`.
+
 ## Ожидаемый результат
 
+- Практическая работа выполнена в репозитории домашних заданий.
+- Использована подготовленная ветка `student/{student-name-slug}/module-07-playwright-basics`.
+- Перед началом работы ветка модуля обновлена из личной ветки `student/{student-name-slug}/master`.
+- Требуемые файлы модуля созданы или обновлены, а `result.md` заполнен, если он предусмотрен заданием.
+- `npm run typecheck` и тесты запущены, если они предусмотрены заданием.
+- PR открыт в `student/{student-name-slug}/master`.
+- `node_modules`, отчёты, состояние авторизации и реальные учётные данные не добавлены в Git.
 - [ ] Ветка модуля 07 обновлена из личной ветки `master` перед началом работы.
 - [ ] Файлы с тестами созданы в `tests/module-07-playwright-basics/`.
 - [ ] Файл `result.md` заполнен.

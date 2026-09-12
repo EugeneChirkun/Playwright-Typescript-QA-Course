@@ -19,27 +19,48 @@ homework/module-09-page-object-model/result.md
 
 Файл `home.page.ts` относится к необязательной части. Сохраните принятую в репозитории структуру, если она немного отличается от примера.
 
-## Задание 1. Подготовить ветку
+## Перед началом работы
 
-Получите актуальные изменения из личной master-ветки и добавьте их в ветку модуля:
+Практическая работа выполняется в репозитории домашних заданий:
+
+`https://github.com/EugeneChirkun/Pw-Ts-Qa-Hw`
+
+Если это первое практическое задание, сначала склонируйте репозиторий:
 
 ```bash
-git fetch origin
+git clone https://github.com/EugeneChirkun/Pw-Ts-Qa-Hw.git
+cd Pw-Ts-Qa-Hw
+```
+
+Если репозиторий уже есть на компьютере, просто откройте его папку в VS Code и обновите ветки. Все команды выполняйте из корня проекта. Не создавайте новую пустую папку или новый проект для текущего модуля.
+
+После принятия предыдущего PR убедитесь, что ваша личная ветка `student/{student-name-slug}/master` обновлена. Затем обновите ветку текущего модуля из этой личной ветки `master`.
+
+При первом локальном переходе в подготовленные удалённые ветки выполните:
+
+```bash
+git fetch origin --prune
+
+git switch --track origin/student/{student-name-slug}/master
+git pull origin student/{student-name-slug}/master
+
+git switch --track origin/student/{student-name-slug}/module-09-page-object-model
+git merge origin/student/{student-name-slug}/master
+```
+
+Если локальные ветки уже существуют, используйте более короткие команды:
+
+```bash
+git fetch origin --prune
 
 git switch student/{student-name-slug}/master
 git pull origin student/{student-name-slug}/master
 
 git switch student/{student-name-slug}/module-09-page-object-model
 git merge origin/student/{student-name-slug}/master
-git push
 ```
 
-Если ветка модуля еще не создана, создайте ее от обновленной личной master-ветки:
-
-```bash
-git switch -c student/{student-name-slug}/module-09-page-object-model
-git push -u origin student/{student-name-slug}/module-09-page-object-model
-```
+Если ветка модуля не найдена, не создавайте ветку со случайным названием. Обратитесь к преподавателю.
 
 ## Задание 2. Создать `LoginPage`
 
@@ -128,10 +149,19 @@ base: student/{student-name-slug}/master
 compare: student/{student-name-slug}/module-09-page-object-model
 ```
 
+Не открывайте PR в `master` репозитория. Домашние задания объединяются в личную основную ветку студента `student/{student-name-slug}/master`.
+
 В описании PR кратко перечислите Page Objects, тестовые сценарии и результаты команд проверки.
 
 ## Ожидаемый результат
 
+- Практическая работа выполнена в репозитории домашних заданий.
+- Использована подготовленная ветка `student/{student-name-slug}/module-09-page-object-model`.
+- Перед началом работы ветка модуля обновлена из личной ветки `student/{student-name-slug}/master`.
+- Требуемые файлы модуля созданы или обновлены, а `result.md` заполнен, если он предусмотрен заданием.
+- `npm run typecheck` и тесты запущены, если они предусмотрены заданием.
+- PR открыт в `student/{student-name-slug}/master`.
+- `node_modules`, отчёты, состояние авторизации и реальные учётные данные не добавлены в Git.
 - Создан как минимум один простой Page Object.
 - `Page` передается в конструктор.
 - Локаторы формы входа находятся в `LoginPage`.
